@@ -65,6 +65,16 @@ const localBusinessSchema = {
   })),
 };
 
+function WhatsAppMark() {
+  return (
+    <span className="whatsappMark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" role="img">
+        <path d="M12 3.25a8.42 8.42 0 0 0-7.18 12.84l-.9 3.54 3.61-.84A8.42 8.42 0 1 0 12 3.25Zm0 1.55a6.88 6.88 0 0 1 5.86 10.49 6.88 6.88 0 0 1-8.08 2.45l-.26-.12-2.2.51.55-2.12-.16-.27A6.88 6.88 0 0 1 12 4.8Zm-2.4 3.63c-.15 0-.38.04-.58.26-.2.22-.76.74-.76 1.8 0 1.06.78 2.09.88 2.23.11.14 1.53 2.38 3.76 3.24 1.86.72 2.24.58 2.65.54.4-.04 1.31-.54 1.5-1.05.18-.52.18-.96.12-1.05-.05-.09-.2-.14-.43-.26-.23-.11-1.34-.66-1.55-.74-.21-.07-.36-.11-.51.12-.15.22-.59.73-.72.88-.13.15-.27.17-.5.06-.23-.12-.96-.35-1.83-1.12-.68-.6-1.13-1.35-1.27-1.58-.13-.22-.01-.34.1-.46.1-.1.23-.27.34-.4.12-.13.15-.22.23-.37.08-.15.04-.28-.02-.4-.06-.11-.5-1.2-.69-1.65-.18-.43-.36-.44-.5-.45l-.42-.01Z" />
+      </svg>
+    </span>
+  );
+}
+
 export default function Home() {
   return (
     <main>
@@ -89,6 +99,15 @@ export default function Home() {
           <a href="#coverage">Coverage</a>
           <a href="#contact">Contact</a>
         </nav>
+        <a
+          className="headerCta"
+          href={`https://wa.me/919595341818?text=${whatsAppMessage}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <WhatsAppMark />
+          WhatsApp
+        </a>
       </header>
 
       <section className="hero" id="top">
@@ -109,9 +128,16 @@ export default function Home() {
               target="_blank"
               rel="noreferrer"
             >
+              <WhatsAppMark />
               WhatsApp
             </a>
             <a href="mailto:hemantmarutitambe@gmail.com">Send Email</a>
+          </div>
+          <div className="heroStats" aria-label="HMT quick facts">
+            <span>Pune city</span>
+            <span>Pune district</span>
+            <span>Civil works</span>
+            <span>Planning and licensing</span>
           </div>
         </div>
         <aside className="heroPanel" aria-label="HMT company summary">
@@ -217,6 +243,7 @@ export default function Home() {
               target="_blank"
               rel="noreferrer"
             >
+              <WhatsAppMark />
               WhatsApp Now
             </a>
             <a href="tel:+919175251338">+91 9175251338</a>
