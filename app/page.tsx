@@ -1,4 +1,4 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
 
 const services = [
   "Civil works contracting",
@@ -69,17 +69,17 @@ export default function Home() {
       />
       <header className="siteHeader" aria-label="HMT site header">
         <a className="brand" href="#top" aria-label="HMT home">
-          <Image
+          <img
             src="/hmt-logo.jpeg"
             alt="HMT Hemant Maruti Tambe logo"
-            width={1160}
-            height={676}
-            priority
           />
         </a>
         <nav aria-label="Primary navigation">
+          <a href="#top">Home</a>
+          <a href="#profile">About</a>
           <a href="#services">Services</a>
-          <a href="#profile">Profile</a>
+          <a href="#projects">Projects</a>
+          <a href="#coverage">Coverage</a>
           <a href="#contact">Contact</a>
         </nav>
       </header>
@@ -151,7 +151,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band workTypes">
+      <section className="band workTypes" id="projects">
         <div className="sectionHead">
           <p className="eyebrow">Project Types</p>
           <h2>Built for owners, developers, and promoters.</h2>
@@ -160,6 +160,26 @@ export default function Home() {
           {projectTypes.map((type) => (
             <span key={type}>{type}</span>
           ))}
+        </div>
+      </section>
+
+      <section className="band coverage" id="coverage">
+        <div className="sectionHead">
+          <p className="eyebrow">Service Area</p>
+          <h2>Focused on Pune city and Pune district.</h2>
+        </div>
+        <div className="coveragePanel">
+          <p>
+            HMT supports civil works and construction requirements in Hadapsar,
+            Pune city, and project locations across Pune district.
+          </p>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Off.+No.+10,+Panchwati+Complex,+Near+Vaibhav+Theatre,+Hadapsar,+Pune+411028"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open Office Location
+          </a>
         </div>
       </section>
 
@@ -183,19 +203,28 @@ export default function Home() {
           </div>
         </div>
         <figure>
-          <Image
+          <img
             src="/hmt-contact-card.jpeg"
             alt="HMT contact card with office address and phone numbers"
-            width={1160}
-            height={676}
           />
           <figcaption>Office contact card</figcaption>
         </figure>
       </section>
 
       <footer>
-        <span>HMT Hemant Maruti Tambe</span>
-        <span>Constructing Concepts</span>
+        <div>
+          <span>HMT Hemant Maruti Tambe</span>
+          <span>Constructing Concepts</span>
+        </div>
+        <nav aria-label="Footer navigation">
+          <a href="#top">Home</a>
+          <a href="#profile">About</a>
+          <a href="#services">Services</a>
+          <a href="#projects">Projects</a>
+          <a href="#coverage">Coverage</a>
+          <a href="#contact">Contact</a>
+          <a href="/sitemap.xml">Sitemap</a>
+        </nav>
       </footer>
     </main>
   );
