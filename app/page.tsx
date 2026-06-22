@@ -25,6 +25,13 @@ const projectTypes = [
   "Licensing and municipal coordination",
 ];
 
+const officeAddress =
+  "Off. No. 10, Panchwati Complex, Near Vaibhav Theatre, Hadapsar, Pune 411028";
+const mapQuery = encodeURIComponent(officeAddress);
+const whatsAppMessage = encodeURIComponent(
+  "Hello Hemant Tambe, I would like to discuss civil work / construction requirements in Pune."
+);
+
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -96,6 +103,14 @@ export default function Home() {
           </p>
           <div className="heroActions" aria-label="Contact actions">
             <a href="tel:+919595341818">Call Hemant Tambe</a>
+            <a
+              className="whatsappLink"
+              href={`https://wa.me/919595341818?text=${whatsAppMessage}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              WhatsApp
+            </a>
             <a href="mailto:hemantmarutitambe@gmail.com">Send Email</a>
           </div>
         </div>
@@ -174,7 +189,7 @@ export default function Home() {
             Pune city, and project locations across Pune district.
           </p>
           <a
-            href="https://www.google.com/maps/search/?api=1&query=Off.+No.+10,+Panchwati+Complex,+Near+Vaibhav+Theatre,+Hadapsar,+Pune+411028"
+            href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`}
             target="_blank"
             rel="noreferrer"
           >
@@ -196,19 +211,45 @@ export default function Home() {
           </address>
           <div className="contactActions">
             <a href="tel:+919595341818">+91 9595341818</a>
+            <a
+              className="whatsappLink"
+              href={`https://wa.me/919595341818?text=${whatsAppMessage}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              WhatsApp Now
+            </a>
             <a href="tel:+919175251338">+91 9175251338</a>
             <a href="mailto:hemantmarutitambe@gmail.com">
               hemantmarutitambe@gmail.com
             </a>
           </div>
         </div>
-        <figure>
-          <img
-            src="/hmt-contact-card.jpeg"
-            alt="HMT contact card with office address and phone numbers"
+        <div className="contactMedia">
+          <div className="contactCardText" aria-label="Readable contact card">
+            <img src="/hmt-logo.jpeg" alt="HMT Constructing Concepts logo" />
+            <strong>Hemant Maruti Tambe</strong>
+            <span>Managing Director</span>
+            <a href="tel:+919595341818">+91 9595341818</a>
+            <a href="tel:+919175251338">+91 9175251338</a>
+            <a href="mailto:hemantmarutitambe@gmail.com">
+              hemantmarutitambe@gmail.com
+            </a>
+          </div>
+          <iframe
+            title="HMT office location on Google Maps"
+            src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
           />
-          <figcaption>Office contact card</figcaption>
-        </figure>
+          <figure>
+            <img
+              src="/hmt-contact-card.jpeg"
+              alt="HMT printed contact card"
+            />
+            <figcaption>Reference card image</figcaption>
+          </figure>
+        </div>
       </section>
 
       <footer>

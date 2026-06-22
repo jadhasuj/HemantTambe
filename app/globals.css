@@ -7,6 +7,7 @@
   --white: #ffffff;
   --red: #a92822;
   --navy: #211f52;
+  --green: #128c4a;
   --line: rgba(23, 23, 41, 0.12);
   --soft: #eef2f7;
 }
@@ -62,16 +63,17 @@ nav {
   gap: clamp(24px, 5vw, 72px);
   padding: clamp(42px, 8vw, 110px) clamp(18px, 5vw, 76px);
   overflow: hidden;
-  background: linear-gradient(110deg, #ffffff 0%, #f4f6fb 55%, #e8edf5 100%);
+  background:
+    linear-gradient(110deg, rgba(255,255,255,.97) 0%, rgba(244,246,251,.94) 56%, rgba(232,237,245,.98) 100%),
+    repeating-linear-gradient(135deg, rgba(169,40,34,.08) 0 1px, transparent 1px 18px);
 }
 
 .heroImage {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(90deg, rgba(247, 248, 251, 0.98), rgba(247, 248, 251, 0.74) 48%, rgba(247, 248, 251, 0.92)),
-    url("/hmt-logo.jpeg") center 24% / min(850px, 86vw) auto no-repeat;
-  opacity: 0.82;
+  background: linear-gradient(90deg, rgba(169, 40, 34, 0.1), transparent 42%),
+    linear-gradient(0deg, rgba(33, 31, 82, 0.08), transparent 55%);
+  opacity: 1;
 }
 
 .heroContent,
@@ -139,6 +141,13 @@ h3 {
   background: var(--red);
   color: var(--white);
   border-color: var(--red);
+}
+
+.heroActions .whatsappLink,
+.contactActions .whatsappLink {
+  background: var(--green);
+  color: var(--white);
+  border-color: var(--green);
 }
 
 .heroPanel {
@@ -276,7 +285,7 @@ h3 {
 
 .contactBand {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 520px);
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
   gap: clamp(24px, 5vw, 72px);
   background: var(--navy);
   color: var(--white);
@@ -310,11 +319,63 @@ address strong {
   border-color: rgba(255, 255, 255, 0.28);
 }
 
+.contactActions .whatsappLink {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.contactMedia {
+  display: grid;
+  gap: 14px;
+}
+
+.contactCardText {
+  display: grid;
+  gap: 8px;
+  padding: 22px;
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.contactCardText img {
+  width: min(290px, 100%);
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.contactCardText strong {
+  color: var(--navy);
+  font-size: 24px;
+}
+
+.contactCardText span {
+  color: var(--muted);
+}
+
+.contactCardText a {
+  color: var(--navy);
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.contactMedia iframe {
+  width: 100%;
+  min-height: 340px;
+  border: 0;
+  background: var(--soft);
+}
+
 figure {
   margin: 0;
   align-self: center;
   background: var(--white);
   padding: 12px;
+}
+
+figure img {
+  width: 100%;
+  height: auto;
 }
 
 figcaption {
