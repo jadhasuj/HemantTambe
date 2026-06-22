@@ -1,0 +1,349 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #171729;
+  --muted: #5f6470;
+  --paper: #f7f8fb;
+  --white: #ffffff;
+  --red: #a92822;
+  --navy: #211f52;
+  --line: rgba(23, 23, 41, 0.12);
+  --soft: #eef2f7;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 78px;
+  padding: 12px clamp(18px, 5vw, 76px);
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(16px);
+}
+
+.brand img {
+  width: min(230px, 48vw);
+  height: 52px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+nav {
+  display: flex;
+  gap: clamp(12px, 3vw, 28px);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.hero {
+  position: relative;
+  min-height: calc(100vh - 78px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 390px);
+  align-items: end;
+  gap: clamp(24px, 5vw, 72px);
+  padding: clamp(42px, 8vw, 110px) clamp(18px, 5vw, 76px);
+  overflow: hidden;
+  background: linear-gradient(110deg, #ffffff 0%, #f4f6fb 55%, #e8edf5 100%);
+}
+
+.heroImage {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(247, 248, 251, 0.98), rgba(247, 248, 251, 0.74) 48%, rgba(247, 248, 251, 0.92)),
+    url("/hmt-logo.jpeg") center 24% / min(850px, 86vw) auto no-repeat;
+  opacity: 0.82;
+}
+
+.heroContent,
+.heroPanel {
+  position: relative;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--red);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1, h2, h3, p { margin-top: 0; }
+h1 {
+  max-width: 850px;
+  margin-bottom: 22px;
+  color: var(--navy);
+  font-size: clamp(48px, 8vw, 108px);
+  line-height: 0.94;
+}
+h2 {
+  margin-bottom: 0;
+  font-size: clamp(30px, 4.6vw, 58px);
+  line-height: 1.02;
+  color: var(--navy);
+}
+h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.lead {
+  max-width: 760px;
+  color: #353846;
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.5;
+}
+
+.heroActions,
+.contactActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.heroActions a,
+.contactActions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--navy);
+  font-weight: 800;
+}
+
+.heroActions a:first-child,
+.contactActions a:first-child {
+  background: var(--red);
+  color: var(--white);
+  border-color: var(--red);
+}
+
+.heroPanel {
+  padding: 26px;
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid var(--line);
+  box-shadow: 0 28px 80px rgba(31, 36, 70, 0.12);
+}
+
+.heroPanel span {
+  display: block;
+  color: var(--red);
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.heroPanel strong {
+  display: block;
+  margin: 10px 0 16px;
+  color: var(--navy);
+  font-size: 24px;
+  font-style: italic;
+}
+
+.heroPanel p {
+  margin-bottom: 8px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.band,
+.contactBand {
+  padding: 76px clamp(18px, 5vw, 76px);
+}
+
+.intro,
+.sectionHead,
+.split {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.45fr) minmax(0, 1fr);
+  gap: clamp(24px, 5vw, 72px);
+  align-items: start;
+}
+
+.intro p:last-child {
+  color: var(--muted);
+  font-size: 19px;
+  line-height: 1.75;
+}
+
+.serviceGrid,
+.strengthGrid,
+.pillGrid {
+  display: grid;
+  gap: 14px;
+}
+
+.serviceGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 28px;
+}
+
+.serviceGrid article,
+.strengthGrid article {
+  min-height: 148px;
+  padding: 22px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 60px rgba(31, 36, 70, 0.06);
+}
+
+.serviceGrid span {
+  display: block;
+  width: 42px;
+  height: 5px;
+  margin-bottom: 22px;
+  background: linear-gradient(90deg, var(--red), var(--navy));
+}
+
+.strengthGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.strengthGrid p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.workTypes {
+  background: var(--white);
+  max-width: none;
+}
+
+.pillGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 28px;
+}
+
+.pillGrid span {
+  padding: 18px;
+  background: var(--soft);
+  border-left: 5px solid var(--red);
+  color: var(--navy);
+  font-weight: 800;
+}
+
+.contactBand {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 520px);
+  gap: clamp(24px, 5vw, 72px);
+  background: var(--navy);
+  color: var(--white);
+}
+
+.contactBand h2 {
+  color: var(--white);
+}
+
+address {
+  display: grid;
+  gap: 7px;
+  margin-top: 28px;
+  color: rgba(255, 255, 255, 0.82);
+  font-style: normal;
+  line-height: 1.55;
+}
+
+address strong {
+  color: var(--white);
+  font-size: 22px;
+}
+
+.contactActions a {
+  word-break: break-word;
+}
+
+.contactActions a:not(:first-child) {
+  background: transparent;
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+figure {
+  margin: 0;
+  align-self: center;
+  background: var(--white);
+  padding: 12px;
+}
+
+figcaption {
+  padding: 10px 4px 2px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px clamp(18px, 5vw, 76px);
+  background: #111124;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .intro,
+  .sectionHead,
+  .split,
+  .contactBand {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceGrid,
+  .pillGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .siteHeader,
+  footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .serviceGrid,
+  .strengthGrid,
+  .pillGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .band,
+  .contactBand {
+    padding-top: 54px;
+    padding-bottom: 54px;
+  }
+}
