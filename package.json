@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vinext build",
+    "deploy:dry-run": "npm run build && wrangler deploy --config dist/server/wrangler.json --dry-run",
+    "deploy:cloudflare": "npm run build && wrangler deploy --config dist/server/wrangler.json",
     "start": "vinext start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate"
