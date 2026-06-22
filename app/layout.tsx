@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hmt-construction.example"),
+  metadataBase: new URL("https://hmtambe.com"),
   title: {
     default: "Hemant Maruti Tambe | HMT Civil Works Contractor Pune",
     template: "%s | HMT",

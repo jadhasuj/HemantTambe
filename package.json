@@ -8,8 +8,10 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vinext build",
+    "build:pages": "npm run build && node scripts/build-pages-static.mjs",
     "deploy:dry-run": "npm run build && wrangler deploy --config dist/server/wrangler.json --dry-run",
     "deploy:cloudflare": "npm run build && wrangler deploy --config dist/server/wrangler.json",
+    "deploy:pages": "npm run build:pages && wrangler pages deploy dist-pages --project-name hemant-tambe --branch main",
     "start": "vinext start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate"
