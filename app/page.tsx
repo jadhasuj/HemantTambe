@@ -133,12 +133,6 @@ export default function Home() {
             </a>
             <a href="mailto:hemantmarutitambe@gmail.com">Send Email</a>
           </div>
-          <div className="heroStats" aria-label="HMT quick facts">
-            <span>Pune city</span>
-            <span>Pune district</span>
-            <span>Civil works</span>
-            <span>Planning and licensing</span>
-          </div>
         </div>
         <aside className="heroPanel" aria-label="HMT company summary">
           <span>HMT</span>
@@ -253,29 +247,12 @@ export default function Home() {
           </div>
         </div>
         <div className="contactMedia">
-          <div className="contactCardText" aria-label="Readable contact card">
-            <img src="/hmt-logo.jpeg" alt="HMT Constructing Concepts logo" />
-            <strong>Hemant Maruti Tambe</strong>
-            <span>Managing Director</span>
-            <a href="tel:+919595341818">+91 9595341818</a>
-            <a href="tel:+919175251338">+91 9175251338</a>
-            <a href="mailto:hemantmarutitambe@gmail.com">
-              hemantmarutitambe@gmail.com
-            </a>
-          </div>
           <iframe
             title="HMT office location on Google Maps"
             src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
-          <figure>
-            <img
-              src="/hmt-contact-card.jpeg"
-              alt="HMT printed contact card"
-            />
-            <figcaption>Reference card image</figcaption>
-          </figure>
         </div>
       </section>
 
