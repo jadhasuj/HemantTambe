@@ -112,7 +112,8 @@ type Content = {
 };
 
 const officeAddress =
-  "Off. No. 10, Panchwati Complex, Near Vaibhav Theatre, Hadapsar, Pune 411028";
+  "Panchawati Complex, Hadapsar Gaon, Hadapsar, Pune, Maharashtra 411028, India";
+const mapUrl = "https://maps.app.goo.gl/hi1WhpziM7oUxftN9";
 const mapQuery = encodeURIComponent(officeAddress);
 const whatsAppMessage = encodeURIComponent(
   "Hello Hemant Tambe, I would like to discuss civil work / construction requirements in Pune."
@@ -131,8 +132,9 @@ const localBusinessSchema = {
   email: "hemantmarutitambe@gmail.com",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Off. No. 10, Panchwati Complex, Near Vaibhav Theatre, Hadapsar",
+    streetAddress: "Panchawati Complex, Hadapsar Gaon, Hadapsar",
     addressLocality: "Pune",
+    addressRegion: "Maharashtra",
     postalCode: "411028",
     addressCountry: "IN",
   },
@@ -367,9 +369,9 @@ const content: Record<Locale, Content> = {
       title: "Discuss approvals, contracting, development, or full construction work.",
       role: "Managing Director, HMT",
       addressLines: [
-        "Off. No. 10, Panchwati Complex",
-        "Near Vaibhav Theatre, Hadapsar",
-        "Pune 411028",
+        "Panchawati Complex",
+        "Hadapsar Gaon, Hadapsar",
+        "Pune, Maharashtra 411028",
       ],
     },
     footer: {
@@ -870,7 +872,7 @@ export default function Home() {
         <div className="coveragePanel">
           <p>{copy.coverage.body}</p>
           <a
-            href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`}
+            href={mapUrl}
             target="_blank"
             rel="noreferrer"
           >

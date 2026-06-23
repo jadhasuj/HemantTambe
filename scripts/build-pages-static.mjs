@@ -27,7 +27,8 @@ if (existsSync(join("dist", "client", "assets", "_vinext_fonts"))) {
   });
 }
 
-const officeAddress = "Off. No. 10, Panchwati Complex, Near Vaibhav Theatre, Hadapsar, Pune 411028";
+const officeAddress = "Panchawati Complex, Hadapsar Gaon, Hadapsar, Pune, Maharashtra 411028, India";
+const mapUrl = "https://maps.app.goo.gl/hi1WhpziM7oUxftN9";
 const mapQuery = encodeURIComponent(officeAddress);
 const whatsAppMessage = encodeURIComponent(
   "Hello Hemant Tambe, I would like to discuss civil work / construction requirements in Pune."
@@ -53,8 +54,9 @@ const localBusinessSchema = {
   email: "hemantmarutitambe@gmail.com",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Off. No. 10, Panchwati Complex, Near Vaibhav Theatre, Hadapsar",
+    streetAddress: "Panchawati Complex, Hadapsar Gaon, Hadapsar",
     addressLocality: "Pune",
+    addressRegion: "Maharashtra",
     postalCode: "411028",
     addressCountry: "IN",
   },
@@ -142,13 +144,13 @@ const html = `<!doctype html>
     <div class="sectionHead"><p class="eyebrow">Service Area</p><h2>Focused on Pune city and Pune district.</h2></div>
     <div class="coveragePanel">
       <p>HMT supports civil works and construction requirements in Hadapsar, Pune city, and project locations across Pune district.</p>
-      <a href="https://www.google.com/maps/search/?api=1&query=${mapQuery}" target="_blank" rel="noreferrer">Open Office Location</a>
+      <a href="${mapUrl}" target="_blank" rel="noreferrer">Open Office Location</a>
     </div>
   </section>
   <section class="contactBand" id="contact">
     <div class="contactText">
       <p class="eyebrow">Contact</p><h2>Discuss civil work or construction requirements in Pune.</h2>
-      <address><strong>Hemant Maruti Tambe</strong><span>Managing Director, HMT</span><span>Off. No. 10, Panchwati Complex</span><span>Near Vaibhav Theatre, Hadapsar</span><span>Pune 411028</span></address>
+      <address><strong>Hemant Maruti Tambe</strong><span>Managing Director, HMT</span><span>Panchawati Complex</span><span>Hadapsar Gaon, Hadapsar</span><span>Pune, Maharashtra 411028</span></address>
       <div class="contactActions">
         <a href="tel:+919595341818">+91 9595341818</a>
         <a class="whatsappLink" href="${whatsappHref}" target="_blank" rel="noreferrer">${whatsappMark} WhatsApp Now</a>
