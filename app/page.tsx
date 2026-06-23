@@ -245,9 +245,11 @@ const content: Record<Locale, Content> = {
         "Hemant Maruti Tambe leads HMT and Vastushrish Associates, delivering civil works, development support, approvals, contracting, and end-to-end building execution across Pune city and Pune district.",
       panelTitle: "Constructing Concepts",
       panelLines: [
-        "PMC, PWD, ZP and private contracts",
-        "Approvals from measurement to municipal sanction",
-        "Execution from excavation to handover",
+        "Contracts: PMC, PWD, ZP & Private",
+        "Approvals: Licenses to Sanction",
+        "Execution: Excavation to Build",
+        "Delivery: Quality & Timely Handover",
+        "Support: Local Expertise, Trusted Quality",
       ],
     },
     intro: {
@@ -478,9 +480,11 @@ const content: Record<Locale, Content> = {
         "हेमंत मारुती तांबे यांच्या नेतृत्वाखाली HMT आणि वास्तुश्रीश असोसिएट्स पुणे शहर व पुणे जिल्ह्यात परवाने, कॉन्ट्रॅक्ट, डेव्हलपमेंट आणि संपूर्ण बांधकामाची कामे करतात.",
       panelTitle: "Constructing Concepts",
       panelLines: [
-        "PMC, PWD, ZP आणि वैयक्तिक कॉन्ट्रॅक्ट",
-        "सरकारी मोजणीपासून महानगरपालिका मंजुरीपर्यंत",
-        "खोदाईपासून कुलूप लावून देण्यापर्यंत",
+        "कॉन्ट्रॅक्ट: PMC, PWD, ZP आणि वैयक्तिक",
+        "मंजुरी: परवाना ते महानगरपालिका अनुमति",
+        "बांधकाम: खोदाई ते निर्माण",
+        "वितरण: गुणवत्ता आणि वेळेवर कुलूप",
+        "समर्थन: स्थानिक कौशल्य, विश्वसनीय गुणवत्ता",
       ],
     },
     intro: {

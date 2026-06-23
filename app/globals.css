@@ -396,9 +396,12 @@ h3 {
 }
 
 .heroPanel p {
-  margin-bottom: 6px;
+  margin-bottom: 10px;
+  padding-left: 12px;
   color: var(--muted);
   line-height: 1.6;
+  border-left: 2px solid var(--red);
+  font-weight: 500;
 }
 
 .band,
