@@ -15,6 +15,25 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+
+/* Accessibility: Skip to main content link */
+.skipLink {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--navy);
+  color: var(--white);
+  padding: 8px 12px;
+  text-decoration: none;
+  z-index: 100;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.skipLink:focus {
+  top: 0;
+}
+
 body {
   margin: 0;
   background: var(--paper);
@@ -29,7 +48,22 @@ body {
 }
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
+a:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
 button { font: inherit; }
+button:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
+}
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
+}
 
 .siteHeader {
   position: sticky;
@@ -66,6 +100,53 @@ nav a {
   padding: 8px 0;
 }
 
+.siteHeader nav a {
+  position: relative;
+  padding: 8px 2px;
+  transition: color 0.2s ease;
+}
+
+.siteHeader nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--red), var(--navy));
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.22s ease;
+}
+
+.siteHeader nav a:hover,
+.siteHeader nav a:focus-visible {
+  color: var(--red);
+}
+
+.siteHeader nav a.isActiveRoute {
+  color: var(--red);
+}
+
+.siteHeader nav a[aria-current="page"] {
+  color: var(--red);
+}
+
+.siteHeader nav a:hover::after,
+.siteHeader nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.siteHeader nav a:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 4px;
+}
+
+.siteHeader nav a.isActiveRoute::after,
+.siteHeader nav a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
 .headerCta {
   display: inline-flex;
   align-items: center;
@@ -94,14 +175,20 @@ nav a {
 }
 
 .langToggle button {
-  min-width: 74px;
-  min-height: 36px;
+  min-width: 44px;
+  min-height: 44px;
   border: 0;
   background: transparent;
   color: var(--navy);
   cursor: pointer;
   font-size: 13px;
   font-weight: 800;
+  border-radius: 4px;
+}
+
+.langToggle button:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
 }
 
 .langToggle .isActive {
@@ -209,6 +296,15 @@ h3 {
   transform: translateY(-1px);
 }
 
+.heroActions a:focus-visible,
+.contactActions a:focus-visible,
+.coveragePanel a:focus-visible,
+.headerCta:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 .heroActions a:first-child,
 .contactActions a:first-child {
   background: var(--red);
@@ -222,6 +318,27 @@ h3 {
   color: var(--white);
   border-color: var(--green);
   box-shadow: 0 14px 30px rgba(18, 140, 74, 0.24);
+}
+
+:lang(mr) .headerCta,
+:lang(mr) .heroActions a,
+:lang(mr) .contactActions a {
+  font-family: var(--font-noto-devanagari), "Segoe UI", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+.whatsappText {
+  display: inline-block;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+:lang(mr) .whatsappText {
+  font-family: var(--font-noto-devanagari), "Segoe UI", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  line-height: 1.6;
 }
 
 .actionMark {
@@ -682,4 +799,79 @@ footer nav {
     padding-top: 46px;
     padding-bottom: 46px;
   }
+}
+
+/* Accessibility: Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Accessibility: Focus visible states for better keyboard navigation */
+*::-webkit-focus-outer {
+  outline: none;
+}
+
+/* Readable font sizing */
+body {
+  font-size: clamp(14px, 1vw, 16px);
+  line-height: 1.6;
+}
+
+h1 {
+  line-height: 1.3;
+}
+
+h2,
+h3 {
+  line-height: 1.35;
+}
+
+/* Ensure form elements are accessible */
+input,
+textarea,
+select,
+button {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Better heading hierarchy support */
+.sectionHead h2,
+.sectionHead h3,
+h2,
+h3 {
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+/* Ensure image captions/alt text visibility */
+.galleryCard,
+.mediaFrame,
+.featureCard {
+  position: relative;
+}
+
+.galleryCard img,
+.mediaFrame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Remove default link underline pseudo-elements to show our better ones */
+.siteHeader nav a::after {
+  content: "";
+}
+
+.heroActions a,
+.contactActions a,
+.headerCta {
+  text-decoration: none;
 }

@@ -3,5 +3,9 @@ export default function MarathiLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <section lang="mr">{children}</section>;
+  return (
+    <section lang="mr" role="main">
+      {children}
+    </section>
+  );
 }

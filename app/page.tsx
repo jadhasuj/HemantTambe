@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 
+import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
 type Locale = "en" | "mr";
@@ -115,9 +116,10 @@ const officeAddress =
   "Panchawati Complex, Hadapsar Gaon, Hadapsar, Pune, Maharashtra 411028, India";
 const mapUrl = "https://maps.app.goo.gl/hi1WhpziM7oUxftN9";
 const mapQuery = encodeURIComponent(officeAddress);
-const whatsAppMessage = encodeURIComponent(
-  "Hello Hemant Tambe, I would like to discuss civil work / construction requirements in Pune."
-);
+const whatsAppMessages: Record<Locale, string> = {
+  en: "Hello Hemant Tambe, I would like to discuss civil work / construction requirements in Pune.",
+  mr: "नमस्कार हेमंत तांबे सर, मला पुण्यात सिव्हिल वर्क / बांधकाम कामाबद्दल चर्चा करायची आहे.",
+};
 
 const localBusinessSchemas: Record<Locale, object> = {
   en: {
@@ -464,7 +466,7 @@ const content: Record<Locale, Content> = {
     },
     actions: {
       call: "हेमंत तांबे यांना कॉल करा",
-      whatsapp: "व्हॉट्सअॅप",
+      whatsapp: "व्हॉट्सॲप",
       email: "ईमेल पाठवा",
       map: "ऑफिस लोकेशन उघडा",
     },
@@ -734,6 +736,7 @@ export default function Home() {
   const router = useRouter();
   const isMarathiPath = pathname?.startsWith("/mr") ?? false;
   const locale: Locale = isMarathiPath ? "mr" : "en";
+  const [activeRoute, setActiveRoute] = useState("top");
 
   const switchLocale = (nextLocale: Locale) => {
     if (nextLocale === "mr" && !isMarathiPath) {
@@ -747,9 +750,40 @@ export default function Home() {
 
   const copy = content[locale];
   const structuredData = [localBusinessSchemas[locale], websiteSchemas[locale]];
+  const whatsAppMessage = encodeURIComponent(whatsAppMessages[locale]);
+
+  useEffect(() => {
+    const sectionIds = ["top", "profile", "services", "work", "projects", "contact"];
+
+    const updateActiveRoute = () => {
+      const marker = window.scrollY + 140;
+      let current = "top";
+
+      sectionIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= marker) {
+          current = id;
+        }
+      });
+
+      setActiveRoute((prev) => (prev === current ? prev : current));
+    };
+
+    updateActiveRoute();
+    window.addEventListener("scroll", updateActiveRoute, { passive: true });
+    window.addEventListener("resize", updateActiveRoute);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveRoute);
+      window.removeEventListener("resize", updateActiveRoute);
+    };
+  }, [pathname]);
 
   return (
     <main>
+      <a href="#mainContent" className="skipLink">
+        Skip to main content
+      </a>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -757,23 +791,25 @@ export default function Home() {
         }}
       />
 
-      <header className="siteHeader" aria-label="HMT site header">
-        <a className="brand" href="#top" aria-label="HMT home">
-          <img src="/hmt-logo.jpeg" alt="HMT Hemant Maruti Tambe logo" />
+      <header className="siteHeader" aria-label="Site header">
+        <a className="brand" href="#top" aria-label="HMT Hemant Maruti Tambe - Home">
+          <img src="/hmt-logo.jpeg" alt="HMT Hemant Maruti Tambe logo" title="Go to homepage" />
         </a>
 
-        <nav aria-label="Primary navigation">
-          <a href="#top">{copy.nav.home}</a>
-          <a href="#profile">{copy.nav.about}</a>
-          <a href="#services">{copy.nav.services}</a>
-          <a href="#work">{copy.nav.work}</a>
-          <a href="#projects">{copy.nav.projects}</a>
-          <a href="#contact">{copy.nav.contact}</a>
+        <nav aria-label="Main navigation">
+          <a href="#top" aria-current={activeRoute === "top" ? "page" : undefined}>{copy.nav.home}</a>
+          <a href="#profile" aria-current={activeRoute === "profile" ? "page" : undefined}>{copy.nav.about}</a>
+          <a href="#services" aria-current={activeRoute === "services" ? "page" : undefined}>{copy.nav.services}</a>
+          <a href="#work" aria-current={activeRoute === "work" ? "page" : undefined}>{copy.nav.work}</a>
+          <a href="#projects" aria-current={activeRoute === "projects" ? "page" : undefined}>{copy.nav.projects}</a>
+          <a href="#contact" aria-current={activeRoute === "contact" ? "page" : undefined}>{copy.nav.contact}</a>
         </nav>
 
-        <div className="headerTools">
-          <div className="langToggle" aria-label="Language switcher">
+        <div className="headerTools" role="region" aria-label="Site tools">
+          <div className="langToggle" aria-label="Language options">
             <button
+              aria-label="Switch to English"
+              aria-pressed={locale === "en"}
               className={locale === "en" ? "isActive" : ""}
               onClick={() => switchLocale("en")}
               type="button"
@@ -781,6 +817,8 @@ export default function Home() {
               EN
             </button>
             <button
+              aria-label="Switch to Marathi"
+              aria-pressed={locale === "mr"}
               className={locale === "mr" ? "isActive" : ""}
               onClick={() => switchLocale("mr")}
               type="button"
@@ -792,22 +830,24 @@ export default function Home() {
             className="headerCta"
             href={`https://wa.me/919595341818?text=${whatsAppMessage}`}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
+            aria-label="Contact via WhatsApp"
+            title="Opens WhatsApp in a new window"
           >
             <WhatsAppMark />
-            {copy.actions.whatsapp}
+            <span className="whatsappText">{copy.actions.whatsapp}</span>
           </a>
         </div>
       </header>
 
-      <section className="hero" id="top">
+      <section className="hero" id="top" aria-label="Hero section">
         <div className="heroImage" aria-hidden="true" />
         <div className="heroContent">
           <p className="eyebrow">{copy.hero.eyebrow}</p>
           <h1>{copy.hero.title}</h1>
           <p className="lead">{copy.hero.lead}</p>
-          <div className="heroActions" aria-label="Contact actions">
-            <a href="tel:+919595341818">
+          <div className="heroActions" aria-label="Quick contact actions">
+            <a href="tel:+919595341818" title="Call Hemant Tambe at +91 9595341818">
               <PhoneMark />
               {copy.actions.call}
             </a>
@@ -815,20 +855,21 @@ export default function Home() {
               className="whatsappLink"
               href={`https://wa.me/919595341818?text=${whatsAppMessage}`}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
+              title="Opens WhatsApp in a new window"
             >
               <WhatsAppMark />
-              {copy.actions.whatsapp}
+              <span className="whatsappText">{copy.actions.whatsapp}</span>
             </a>
-            <a href="mailto:hemantmarutitambe@gmail.com">
+            <a href="mailto:hemantmarutitambe@gmail.com" title="Send email to hemantmarutitambe@gmail.com">
               <MailMark />
               {copy.actions.email}
             </a>
           </div>
         </div>
 
-        <aside className="heroPanel" aria-label="HMT company summary">
-          <span>HMT</span>
+        <aside className="heroPanel" aria-label="Company overview">
+          <span aria-label="HMT">HMT</span>
           <strong>{copy.hero.panelTitle}</strong>
           {copy.hero.panelLines.map((line) => (
             <p key={line}>{line}</p>
@@ -836,17 +877,17 @@ export default function Home() {
         </aside>
       </section>
 
-      <section className="band intro" id="profile">
+      <section className="band intro" id="profile" aria-labelledby="profileHeading">
         <div>
-          <p className="eyebrow">{copy.intro.eyebrow}</p>
+          <p className="eyebrow" id="profileHeading">{copy.intro.eyebrow}</p>
           <h2>{copy.intro.title}</h2>
         </div>
         <p>{copy.intro.body}</p>
       </section>
 
-      <section className="band" id="services">
+      <section className="band" id="services" aria-labelledby="servicesHeading">
         <div className="sectionHead">
-          <p className="eyebrow">{copy.services.eyebrow}</p>
+          <p className="eyebrow" id="servicesHeading">{copy.services.eyebrow}</p>
           <h2>{copy.services.title}</h2>
         </div>
         <div className="serviceGrid">
@@ -859,9 +900,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band storyBand" id="work">
+      <section className="band storyBand" id="work" aria-labelledby="workHeading">
         <div className="sectionHead">
-          <p className="eyebrow">{copy.workModes.eyebrow}</p>
+          <p className="eyebrow" id="workHeading">{copy.workModes.eyebrow}</p>
           <h2>{copy.workModes.title}</h2>
         </div>
         <div className="featureGrid">
@@ -874,9 +915,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band">
+      <section className="band" aria-labelledby="experienceHeading">
         <div className="sectionHead">
-          <p className="eyebrow">{copy.experience.eyebrow}</p>
+          <p className="eyebrow" id="experienceHeading">{copy.experience.eyebrow}</p>
           <h2>{copy.experience.title}</h2>
         </div>
         <div className="featureGrid">
@@ -889,9 +930,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band splitMedia">
+      <section className="band splitMedia" aria-labelledby="costingHeading">
         <div className="costCard">
-          <p className="eyebrow">{copy.costing.eyebrow}</p>
+          <p className="eyebrow" id="costingHeading">{copy.costing.eyebrow}</p>
           <h2>{copy.costing.title}</h2>
           <p>{copy.costing.body}</p>
           <ul className="bulletList">
@@ -908,9 +949,9 @@ export default function Home() {
         </figure>
       </section>
 
-      <section className="band">
+      <section className="band" aria-labelledby="whyEngineerHeading">
         <div className="sectionHead">
-          <p className="eyebrow">{copy.whyEngineer.eyebrow}</p>
+          <p className="eyebrow" id="whyEngineerHeading">{copy.whyEngineer.eyebrow}</p>
           <h2>{copy.whyEngineer.title}</h2>
         </div>
         <div className="twoColumnText">
@@ -922,9 +963,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band splitPanels">
+      <section className="band splitPanels" aria-labelledby="teamHeading">
         <article className="infoPanel">
-          <p className="eyebrow">{copy.team.eyebrow}</p>
+          <p className="eyebrow" id="teamHeading">{copy.team.eyebrow}</p>
           <h2>{copy.team.title}</h2>
           <p>{copy.team.body}</p>
           <ul className="bulletList panelBulletList">
@@ -945,9 +986,9 @@ export default function Home() {
         </article>
       </section>
 
-      <section className="band networkBand">
+      <section className="band networkBand" aria-labelledby="networkHeading">
         <div className="sectionHead">
-          <p className="eyebrow">{copy.network.eyebrow}</p>
+          <p className="eyebrow" id="networkHeading">{copy.network.eyebrow}</p>
           <h2>{copy.network.title}</h2>
         </div>
         <div className="splitPanels">
@@ -970,9 +1011,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band galleryBand" id="projects">
+      <section className="band galleryBand" id="projects" aria-labelledby="projectsHeading">
         <div className="sectionHead">
-          <p className="eyebrow">{copy.projects.eyebrow}</p>
+          <p className="eyebrow" id="projectsHeading">{copy.projects.eyebrow}</p>
           <h2>{copy.projects.title}</h2>
         </div>
         <div className="galleryGrid">
@@ -988,9 +1029,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band coverage" id="coverage">
+      <section className="band coverage" id="coverage" aria-labelledby="coverageHeading">
         <div className="sectionHead">
-          <p className="eyebrow">{copy.coverage.eyebrow}</p>
+          <p className="eyebrow" id="coverageHeading">{copy.coverage.eyebrow}</p>
           <h2>{copy.coverage.title}</h2>
         </div>
         <div className="coveragePanel">
@@ -998,7 +1039,8 @@ export default function Home() {
           <a
             href={mapUrl}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
+            title="View coverage area on Google Maps (opens in new window)"
           >
             <MapPinMark />
             {copy.actions.map}
@@ -1006,9 +1048,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="contactBand" id="contact">
+      <section className="contactBand" id="contact" aria-labelledby="contactHeading">
         <div className="contactText">
-          <p className="eyebrow">{copy.contact.eyebrow}</p>
+          <p className="eyebrow" id="contactHeading">{copy.contact.eyebrow}</p>
           <h2>{copy.contact.title}</h2>
           <address>
             <strong>Hemant Maruti Tambe</strong>
@@ -1018,7 +1060,7 @@ export default function Home() {
             ))}
           </address>
           <div className="contactActions">
-            <a href="tel:+919595341818">
+            <a href="tel:+919595341818" title="Call +91 9595341818">
               <PhoneMark />
               +91 9595341818
             </a>
@@ -1026,16 +1068,17 @@ export default function Home() {
               className="whatsappLink"
               href={`https://wa.me/919595341818?text=${whatsAppMessage}`}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
+              title="Opens WhatsApp in a new window"
             >
               <WhatsAppMark />
-              {copy.actions.whatsapp}
+              <span className="whatsappText">{copy.actions.whatsapp}</span>
             </a>
-            <a href="tel:+919175251338">
+            <a href="tel:+919175251338" title="Call +91 9175251338">
               <PhoneMark />
               +91 9175251338
             </a>
-            <a href="mailto:hemantmarutitambe@gmail.com">
+            <a href="mailto:hemantmarutitambe@gmail.com" title="Send email to hemantmarutitambe@gmail.com">
               <MailMark />
               hemantmarutitambe@gmail.com
             </a>
@@ -1044,15 +1087,16 @@ export default function Home() {
 
         <div className="contactMedia">
           <iframe
-            title="HMT office location on Google Maps"
+            title="HMT office location on Google Maps - Pune, Maharashtra"
             src={`https://www.google.com/maps?q=${mapQuery}&output=embed`}
             loading="lazy"
+            tabIndex={-1}
             referrerPolicy="no-referrer-when-downgrade"
           />
         </div>
       </section>
 
-      <footer>
+      <footer role="contentinfo" aria-label="Site footer">
         <div>
           <span>{copy.footer.brand}</span>
           <span>{copy.footer.tagline}</span>

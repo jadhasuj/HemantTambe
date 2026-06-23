@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Home from "../page";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.hmtambe.com";
+
 export const metadata: Metadata = {
   title: "हेमंत मारुती तांबे | HMT सिव्हिल वर्क्स कॉन्ट्रॅक्टर पुणे",
   description:
@@ -28,7 +30,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "HMT Hemant Maruti Tambe",
     locale: "mr_IN",
-    url: "https://hmtambe.com/mr",
+    url: `${siteUrl}/mr`,
     images: [
       {
         url: "/hmt-logo.jpeg",

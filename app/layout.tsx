@@ -18,8 +18,10 @@ const notoSansDevanagari = Noto_Sans_Devanagari({
   weight: ["400", "700"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.hmtambe.com";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hmtambe.com"),
+  metadataBase: new URL(siteUrl),
   alternates: {
     canonical: "/",
     languages: {
@@ -71,7 +73,7 @@ export const metadata: Metadata = {
     description:
       "Civil works, construction contracting, development support, architectural planning, and licensing across Pune.",
     type: "website",
-    url: "https://hmtambe.com",
+    url: siteUrl,
     siteName: "HMT Hemant Maruti Tambe",
     locale: "en_IN",
     localeAlternate: ["mr_IN"],
@@ -95,6 +97,16 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "HMT",
+  },
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
 };
 
 export default function RootLayout({
@@ -103,7 +115,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" dir="ltr">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="color-scheme" content="light" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${notoSansDevanagari.variable} antialiased`}
       >
