@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 
-import { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 type Locale = "en" | "mr";
 
@@ -119,30 +119,103 @@ const whatsAppMessage = encodeURIComponent(
   "Hello Hemant Tambe, I would like to discuss civil work / construction requirements in Pune."
 );
 
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "HMT Hemant Maruti Tambe",
-  alternateName: "Hemant Maruti Tambe",
-  slogan: "Constructing Concepts",
-  description:
-    "Civil engineer and civil works contractor serving Pune city and Pune district.",
-  image: "/hmt-logo.jpeg",
-  telephone: ["+91 9595341818", "+91 9175251338"],
-  email: "hemantmarutitambe@gmail.com",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Panchawati Complex, Hadapsar Gaon, Hadapsar",
-    addressLocality: "Pune",
-    addressRegion: "Maharashtra",
-    postalCode: "411028",
-    addressCountry: "IN",
+const localBusinessSchemas: Record<Locale, object> = {
+  en: {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://hmtambe.com/#localbusiness",
+    name: "HMT Hemant Maruti Tambe",
+    alternateName: "Hemant Maruti Tambe",
+    slogan: "Constructing Concepts",
+    description:
+      "Civil engineer and civil works contractor serving Pune city and Pune district.",
+    inLanguage: "en-IN",
+    image: "/hmt-logo.jpeg",
+    url: "https://hmtambe.com",
+    telephone: ["+91 9595341818", "+91 9175251338"],
+    email: "hemantmarutitambe@gmail.com",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Panchawati Complex, Hadapsar Gaon, Hadapsar",
+      addressLocality: "Pune",
+      addressRegion: "Maharashtra",
+      postalCode: "411028",
+      addressCountry: "IN",
+    },
+    areaServed: ["Pune city", "Pune district"],
+    founder: {
+      "@type": "Person",
+      name: "Hemant Maruti Tambe",
+      jobTitle: "Managing Director",
+    },
   },
-  areaServed: ["Pune city", "Pune district"],
-  founder: {
-    "@type": "Person",
-    name: "Hemant Maruti Tambe",
-    jobTitle: "Managing Director",
+  mr: {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://hmtambe.com/mr#localbusiness",
+    name: "HMT हेमंत मारुती तांबे",
+    alternateName: "हेमंत मारुती तांबे",
+    slogan: "Constructing Concepts",
+    description:
+      "पुणे शहर आणि पुणे जिल्ह्यात सिव्हिल वर्क्स, बांधकाम कॉन्ट्रॅक्ट, परवाने आणि विकास सहाय्य सेवा.",
+    inLanguage: "mr-IN",
+    image: "/hmt-logo.jpeg",
+    url: "https://hmtambe.com/mr",
+    telephone: ["+91 9595341818", "+91 9175251338"],
+    email: "hemantmarutitambe@gmail.com",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Panchawati Complex, Hadapsar Gaon, Hadapsar",
+      addressLocality: "Pune",
+      addressRegion: "Maharashtra",
+      postalCode: "411028",
+      addressCountry: "IN",
+    },
+    areaServed: ["Pune city", "Pune district"],
+    founder: {
+      "@type": "Person",
+      name: "Hemant Maruti Tambe",
+      jobTitle: "Managing Director",
+    },
+  },
+};
+
+const websiteSchemas: Record<Locale, object> = {
+  en: {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://hmtambe.com/#website",
+    url: "https://hmtambe.com",
+    name: "HMT Hemant Maruti Tambe",
+    inLanguage: "en-IN",
+    description:
+      "Civil works contractor and construction services in Pune city and Pune district.",
+    publisher: {
+      "@type": "Organization",
+      name: "HMT Hemant Maruti Tambe",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://hmtambe.com/hmt-logo.jpeg",
+      },
+    },
+  },
+  mr: {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://hmtambe.com/mr#website",
+    url: "https://hmtambe.com/mr",
+    name: "HMT हेमंत मारुती तांबे",
+    inLanguage: "mr-IN",
+    description:
+      "पुणे शहर आणि पुणे जिल्ह्यात सिव्हिल वर्क्स आणि बांधकाम सेवा.",
+    publisher: {
+      "@type": "Organization",
+      name: "HMT Hemant Maruti Tambe",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://hmtambe.com/hmt-logo.jpeg",
+      },
+    },
   },
 };
 
@@ -626,16 +699,61 @@ function WhatsAppMark() {
   );
 }
 
+function PhoneMark() {
+  return (
+    <span className="actionMark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" role="img">
+        <path d="M7.1 3.25A2.6 2.6 0 0 0 4.6 6.5c.13 1.7.64 3.34 1.5 4.8A19.7 19.7 0 0 0 12.7 18a19.7 19.7 0 0 0 4.79 1.49 2.6 2.6 0 0 0 2.98-2.34l.2-1.84a1.8 1.8 0 0 0-1.15-1.86l-2.46-.93a1.8 1.8 0 0 0-1.86.41l-.92.93a14.6 14.6 0 0 1-4.1-4.1l.93-.92a1.8 1.8 0 0 0 .4-1.86l-.92-2.46A1.8 1.8 0 0 0 8.74 3.3L7.1 3.25Z" />
+      </svg>
+    </span>
+  );
+}
+
+function MailMark() {
+  return (
+    <span className="actionMark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" role="img">
+        <path d="M4 5.25h16A2.75 2.75 0 0 1 22.75 8v8A2.75 2.75 0 0 1 20 18.75H4A2.75 2.75 0 0 1 1.25 16V8A2.75 2.75 0 0 1 4 5.25Zm0 1.5c-.45 0-.85.21-1.12.53L12 13.8l9.12-6.52A1.24 1.24 0 0 0 20 6.75H4Zm17.25 2.37-8.6 6.15a1.15 1.15 0 0 1-1.3 0l-8.6-6.15V16c0 .69.56 1.25 1.25 1.25h16c.69 0 1.25-.56 1.25-1.25V9.12Z" />
+      </svg>
+    </span>
+  );
+}
+
+function MapPinMark() {
+  return (
+    <span className="actionMark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" role="img">
+        <path d="M12 2.5a7 7 0 0 0-7 7c0 4.95 5.44 10.89 6.05 11.55a1.3 1.3 0 0 0 1.9 0C13.56 20.39 19 14.45 19 9.5a7 7 0 0 0-7-7Zm0 9.6a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2Z" />
+      </svg>
+    </span>
+  );
+}
+
 export default function Home() {
-  const [locale, setLocale] = useState<Locale>("en");
+  const pathname = usePathname();
+  const router = useRouter();
+  const isMarathiPath = pathname?.startsWith("/mr") ?? false;
+  const locale: Locale = isMarathiPath ? "mr" : "en";
+
+  const switchLocale = (nextLocale: Locale) => {
+    if (nextLocale === "mr" && !isMarathiPath) {
+      router.push("/mr");
+      return;
+    }
+    if (nextLocale === "en" && isMarathiPath) {
+      router.push("/");
+    }
+  };
+
   const copy = content[locale];
+  const structuredData = [localBusinessSchemas[locale], websiteSchemas[locale]];
 
   return (
     <main>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(localBusinessSchema),
+          __html: JSON.stringify(structuredData),
         }}
       />
 
@@ -657,14 +775,14 @@ export default function Home() {
           <div className="langToggle" aria-label="Language switcher">
             <button
               className={locale === "en" ? "isActive" : ""}
-              onClick={() => setLocale("en")}
+              onClick={() => switchLocale("en")}
               type="button"
             >
               EN
             </button>
             <button
               className={locale === "mr" ? "isActive" : ""}
-              onClick={() => setLocale("mr")}
+              onClick={() => switchLocale("mr")}
               type="button"
             >
               मराठी
@@ -689,7 +807,10 @@ export default function Home() {
           <h1>{copy.hero.title}</h1>
           <p className="lead">{copy.hero.lead}</p>
           <div className="heroActions" aria-label="Contact actions">
-            <a href="tel:+919595341818">{copy.actions.call}</a>
+            <a href="tel:+919595341818">
+              <PhoneMark />
+              {copy.actions.call}
+            </a>
             <a
               className="whatsappLink"
               href={`https://wa.me/919595341818?text=${whatsAppMessage}`}
@@ -699,7 +820,10 @@ export default function Home() {
               <WhatsAppMark />
               {copy.actions.whatsapp}
             </a>
-            <a href="mailto:hemantmarutitambe@gmail.com">{copy.actions.email}</a>
+            <a href="mailto:hemantmarutitambe@gmail.com">
+              <MailMark />
+              {copy.actions.email}
+            </a>
           </div>
         </div>
 
@@ -876,6 +1000,7 @@ export default function Home() {
             target="_blank"
             rel="noreferrer"
           >
+            <MapPinMark />
             {copy.actions.map}
           </a>
         </div>
@@ -893,7 +1018,10 @@ export default function Home() {
             ))}
           </address>
           <div className="contactActions">
-            <a href="tel:+919595341818">+91 9595341818</a>
+            <a href="tel:+919595341818">
+              <PhoneMark />
+              +91 9595341818
+            </a>
             <a
               className="whatsappLink"
               href={`https://wa.me/919595341818?text=${whatsAppMessage}`}
@@ -903,8 +1031,12 @@ export default function Home() {
               <WhatsAppMark />
               {copy.actions.whatsapp}
             </a>
-            <a href="tel:+919175251338">+91 9175251338</a>
+            <a href="tel:+919175251338">
+              <PhoneMark />
+              +91 9175251338
+            </a>
             <a href="mailto:hemantmarutitambe@gmail.com">
+              <MailMark />
               hemantmarutitambe@gmail.com
             </a>
           </div>
@@ -934,7 +1066,6 @@ export default function Home() {
           <a href="#contact">{copy.nav.contact}</a>
           <a href="/sitemap.xml">Sitemap</a>
         </nav>
-        <p className="footerNote">{copy.footer.note}</p>
       </footer>
     </main>
   );

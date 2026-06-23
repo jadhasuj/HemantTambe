@@ -14,10 +14,18 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hmtambe.com"),
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-IN": "/",
+      "mr-IN": "/mr",
+    },
+  },
   title: {
     default: "Hemant Maruti Tambe | HMT Civil Works Contractor Pune",
     template: "%s | HMT",
   },
+  applicationName: "HMT Hemant Maruti Tambe",
   description:
     "Hemant Maruti Tambe is Managing Director of HMT, a civil engineer and civil works contractor serving Pune city and Pune district.",
   keywords: [
@@ -33,12 +41,34 @@ export const metadata: Metadata = {
   authors: [{ name: "Hemant Maruti Tambe" }],
   creator: "HMT",
   publisher: "HMT",
+  category: "Construction",
+  referrer: "origin-when-cross-origin",
+  formatDetection: {
+    email: true,
+    address: true,
+    telephone: true,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     title: "Hemant Maruti Tambe | HMT Civil Works Contractor Pune",
     description:
       "Civil works, construction contracting, development support, architectural planning, and licensing across Pune.",
     type: "website",
+    url: "https://hmtambe.com",
+    siteName: "HMT Hemant Maruti Tambe",
     locale: "en_IN",
+    localeAlternate: ["mr_IN"],
     images: [
       {
         url: "/hmt-logo.jpeg",
