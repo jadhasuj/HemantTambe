@@ -23,6 +23,7 @@ body {
 }
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
+button { font: inherit; }
 
 .siteHeader {
   position: sticky;
@@ -71,6 +72,35 @@ nav a {
   font-weight: 800;
   white-space: nowrap;
   box-shadow: 0 12px 28px rgba(18, 140, 74, 0.22);
+}
+
+.headerTools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.langToggle {
+  display: inline-flex;
+  padding: 4px;
+  background: rgba(33, 31, 82, 0.08);
+  border: 1px solid rgba(33, 31, 82, 0.12);
+}
+
+.langToggle button {
+  min-width: 74px;
+  min-height: 36px;
+  border: 0;
+  background: transparent;
+  color: var(--navy);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.langToggle .isActive {
+  background: var(--navy);
+  color: var(--white);
 }
 
 .hero {
@@ -251,7 +281,9 @@ h3 {
 
 .serviceGrid,
 .strengthGrid,
-.pillGrid {
+.pillGrid,
+.featureGrid,
+.galleryGrid {
   display: grid;
   gap: 14px;
 }
@@ -262,12 +294,27 @@ h3 {
 }
 
 .serviceGrid article,
-.strengthGrid article {
+.strengthGrid article,
+.featureGrid article,
+.infoPanel,
+.galleryCard {
   min-height: 148px;
   padding: 22px;
   background: var(--white);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
+}
+
+.featureGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.featureGrid p,
+.galleryCard p,
+.infoPanel p,
+.costCard p {
+  color: var(--muted);
+  line-height: 1.65;
 }
 
 .serviceGrid span {
@@ -315,6 +362,70 @@ h3 {
   background: var(--white);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
+}
+
+.storyBand,
+.galleryBand,
+.networkBand {
+  background: rgba(255, 255, 255, 0.56);
+}
+
+.splitMedia,
+.splitPanels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.costCard,
+.mediaFrame {
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.costCard {
+  padding: 24px;
+}
+
+.mediaFrame {
+  padding: 12px;
+}
+
+.mediaFrame img {
+  width: 100%;
+  height: auto;
+}
+
+.bulletList {
+  margin: 18px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.bulletList li + li {
+  margin-top: 8px;
+}
+
+.twoColumnText {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.galleryGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.galleryCard {
+  padding: 12px;
+}
+
+.galleryCard img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  margin-bottom: 14px;
 }
 
 .coveragePanel p {
@@ -396,6 +507,7 @@ footer {
   background: #111124;
   color: rgba(255, 255, 255, 0.8);
   font-size: 14px;
+  flex-wrap: wrap;
 }
 
 footer > div {
@@ -406,6 +518,12 @@ footer > div {
 footer nav {
   justify-content: flex-end;
   color: rgba(255, 255, 255, 0.82);
+}
+
+.footerNote {
+  width: 100%;
+  color: rgba(255, 255, 255, 0.62);
+  margin-bottom: 0;
 }
 
 @media (max-width: 900px) {
@@ -422,18 +540,23 @@ footer nav {
   .intro,
   .sectionHead,
   .split,
-  .contactBand {
+  .contactBand,
+  .splitMedia,
+  .splitPanels {
     grid-template-columns: 1fr;
   }
 
   .serviceGrid,
   .pillGrid,
-  .coveragePanel {
+  .coveragePanel,
+  .featureGrid,
+  .galleryGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 640px) {
+  .siteHeader,
   footer {
     align-items: flex-start;
     flex-direction: column;
@@ -451,8 +574,19 @@ footer nav {
   .serviceGrid,
   .strengthGrid,
   .pillGrid,
-  .coveragePanel {
+  .coveragePanel,
+  .featureGrid,
+  .galleryGrid {
     grid-template-columns: 1fr;
+  }
+
+  .headerTools,
+  .langToggle {
+    width: 100%;
+  }
+
+  .langToggle button {
+    flex: 1 1 0;
   }
 
   .band,
