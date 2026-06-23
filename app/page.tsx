@@ -957,10 +957,12 @@ export default function Home() {
             </article>
           </div>
           <div style={{ marginTop: "40px", textAlign: "center" }}>
-            <Link href="/areas" className="heroActions" style={{ justifyContent: "center" }}>
-              <a style={{ display: "inline-flex" }}>
-                Explore Our Service Areas
-              </a>
+            <Link
+              href="/areas"
+              className="heroActions"
+              style={{ justifyContent: "center", display: "inline-flex" }}
+            >
+              Explore Our Service Areas
             </Link>
           </div>
         </div>

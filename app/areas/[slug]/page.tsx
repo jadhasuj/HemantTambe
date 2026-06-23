@@ -228,10 +228,12 @@ export default function AreaPage({ params }: { params: { slug: string } }) {
 
       {/* Back to Areas */}
       <section className="band" style={{ textAlign: "center", paddingBottom: "60px" }}>
-        <Link href="/areas" className="heroActions">
-          <a style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
-            ← Back to All Service Areas
-          </a>
+        <Link
+          href="/areas"
+          className="heroActions"
+          style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
+        >
+          ← Back to All Service Areas
         </Link>
       </section>
 
