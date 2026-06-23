@@ -14,7 +14,7 @@ const csp = [
   "frame-src 'self' https://www.google.com https://maps.google.com https://www.google.com/maps",
   "manifest-src 'self'",
   "media-src 'self' https:",
-  "upgrade-insecure-requests",
+  ...(process.env.NODE_ENV === "production" ? ["upgrade-insecure-requests"] : []),
 ].join("; ");
 
 const nextConfig: NextConfig = {
