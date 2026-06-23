@@ -19,12 +19,12 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-noto-devanagari, var(--font-geist-sans)), "Segoe UI", Helvetica, Arial, sans-serif;
+  font-family: var(--font-geist-sans), "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.6;
 }
 
-html[lang="mr"] {
+:lang(mr) {
   font-family: var(--font-noto-devanagari), "Segoe UI", Helvetica, Arial, sans-serif;
 }
 img { display: block; max-width: 100%; }
@@ -142,7 +142,14 @@ nav a {
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.14em;
+  line-height: 1.5;
   text-transform: uppercase;
+}
+
+:lang(mr) .eyebrow {
+  letter-spacing: 0.03em;
+  text-transform: none;
+  line-height: 1.8;
 }
 
 h1, h2, h3, p { margin-top: 0; }
@@ -150,19 +157,19 @@ h1 {
   max-width: 850px;
   margin-bottom: 14px;
   color: var(--navy);
-  font-size: clamp(38px, 6vw, 72px);
-  line-height: 1;
+  font-size: clamp(32px, 4.8vw, 58px);
+  line-height: 1.12;
 }
 h2 {
   margin-bottom: 0;
-  font-size: clamp(28px, 4.2vw, 44px);
-  line-height: 1.1;
+  font-size: clamp(24px, 3.6vw, 36px);
+  line-height: 1.2;
   color: var(--navy);
 }
 h3 {
   margin-bottom: 8px;
-  font-size: clamp(18px, 2vw, 22px);
-  line-height: 1.3;
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.35;
 }
 
 .lead {
@@ -295,6 +302,19 @@ h3 {
   align-items: start;
 }
 
+.sectionHead {
+  align-items: start;
+  gap: clamp(18px, 3vw, 42px);
+}
+
+.sectionHead .eyebrow {
+  margin-bottom: 6px;
+}
+
+.sectionHead h2 {
+  text-wrap: balance;
+}
+
 .intro p:last-child {
   color: var(--muted);
   font-size: clamp(17px, 1.4vw, 19px);
@@ -398,6 +418,7 @@ h3 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
+  align-items: stretch;
 }
 
 .costCard,
@@ -413,11 +434,14 @@ h3 {
 
 .mediaFrame {
   padding: 12px;
+  overflow: hidden;
 }
 
 .mediaFrame img {
   width: 100%;
   height: auto;
+  transform: scale(1.05);
+  transition: transform 0.45s ease;
 }
 
 .bulletList {
@@ -442,6 +466,7 @@ h3 {
 
 .galleryCard {
   padding: 12px;
+  overflow: hidden;
 }
 
 .galleryCard img {
@@ -449,6 +474,46 @@ h3 {
   aspect-ratio: 4 / 3;
   object-fit: cover;
   margin-bottom: 12px;
+  transform: scale(1.05);
+  transition: transform 0.45s ease;
+}
+
+.galleryCard:hover img,
+.mediaFrame:hover img {
+  transform: scale(1);
+}
+
+.infoPanel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.panelBulletList {
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.panelBulletList li {
+  position: relative;
+  padding: 0 0 0 20px;
+  line-height: 1.75;
+}
+
+.panelBulletList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.78em;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--red), #d1584f);
+}
+
+.panelBulletList li + li {
+  margin-top: 9px;
 }
 
 .coveragePanel p {
