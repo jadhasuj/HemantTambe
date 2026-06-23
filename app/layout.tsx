@@ -125,6 +125,63 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${notoSansDevanagari.variable} antialiased`}
       >
         {children}
+        {/* LocalBusiness Schema Markup */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "@id": siteUrl,
+              name: "HMT Hemant Maruti Tambe",
+              description:
+                "Civil engineer and civil works contractor providing construction services across Pune and PCMC",
+              url: siteUrl,
+              logo: `${siteUrl}/hmt-logo.jpeg`,
+              image: `${siteUrl}/hmt-logo.jpeg`,
+              sameAs: [],
+              telephone: "+919595341818",
+              email: "hemantmarutitambe@gmail.com",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Pune and Pune District",
+                addressLocality: "Pune",
+                addressRegion: "Maharashtra",
+                postalCode: "411001",
+                addressCountry: "India",
+              },
+              areaServed: [
+                {
+                  "@type": "City",
+                  name: "Pune",
+                  region: "Maharashtra",
+                  country: "India",
+                },
+                {
+                  "@type": "City",
+                  name: "Pimpri-Chinchwad",
+                  region: "Maharashtra",
+                  country: "India",
+                },
+              ],
+              priceRange: "$$",
+              serviceType: [
+                "Residential Construction",
+                "Commercial Construction",
+                "Civil Works",
+                "RCC Structures",
+                "Industrial Construction",
+              ],
+              knowsAbout: [
+                "Construction Management",
+                "Civil Engineering",
+                "Residential Projects",
+                "Commercial Projects",
+                "Industrial Projects",
+              ],
+            }),
+          }}
+        />
       </body>
     </html>
   );

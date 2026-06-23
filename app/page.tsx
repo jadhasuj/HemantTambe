@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
 
 type Locale = "en" | "mr";
 
@@ -897,6 +898,71 @@ export default function Home() {
               <h3>{item}</h3>
             </article>
           ))}
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="band whyChooseUsSection" aria-labelledby="whyChooseHeading">
+        <div className="sectionHead">
+          <p className="eyebrow" id="whyChooseHeading">Why Partner With Us</p>
+          <h2>Why Choose HMT as Your Construction Partner?</h2>
+        </div>
+        <div>
+          <p className="lead" style={{ marginBottom: "32px" }}>
+            We don&apos;t just build structures; we build value. With over a decade of expertise, we bridge
+            the gap between high-end architectural design and rigorous civil engineering.
+          </p>
+          <div className="whyChooseGrid">
+            <article className="whyChooseCard">
+              <h3>Integrated Construction Expertise</h3>
+              <p>
+                From initial land assessment and foundation (RCC) work to interior finishing and
+                utility installation—we handle every aspect of your project with precision and care.
+              </p>
+            </article>
+            <article className="whyChooseCard">
+              <h3>Transparent Project Management</h3>
+              <p>
+                Real-time updates and clear milestones ensure your project&mdash;be it residential or civic
+                infrastructure&mdash;stays on budget and on schedule. You&apos;re always in the loop.
+              </p>
+            </article>
+            <article className="whyChooseCard">
+              <h3>Local Compliance Expertise</h3>
+              <p>
+                Deep understanding of building bylaws specific to PMC and PCMC. We navigate local
+                regulations efficiently, accelerating approvals without compromising quality.
+              </p>
+            </article>
+            <article className="whyChooseCard">
+              <h3>Quality-First Methodology</h3>
+              <p>
+                Premium-grade materials and modern construction standards ensure your investment stands
+                the test of time against Pune&apos;s regional climate and environmental conditions.
+              </p>
+            </article>
+            <article className="whyChooseCard">
+              <h3>Specialized Skill Sets</h3>
+              <p>
+                Whether general contractor services for full home builds or dedicated civil work for
+                structural reinforcement, our teams have the expertise and modern machinery to deliver.
+              </p>
+            </article>
+            <article className="whyChooseCard">
+              <h3>Trusted Across Pune & PCMC</h3>
+              <p>
+                Active in 28+ locations from Kothrud to Hinjewadi, from Hadapsar to Chakan. Our
+                network ensures local excellence wherever you build.
+              </p>
+            </article>
+          </div>
+          <div style={{ marginTop: "40px", textAlign: "center" }}>
+            <Link href="/areas" className="heroActions" style={{ justifyContent: "center" }}>
+              <a style={{ display: "inline-flex" }}>
+                Explore Our Service Areas
+              </a>
+            </Link>
+          </div>
         </div>
       </section>
 

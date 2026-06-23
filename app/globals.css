@@ -875,3 +875,229 @@ h3 {
 .headerCta {
   text-decoration: none;
 }
+
+/* Service Areas Styles */
+.serviceAreasHero {
+  background:
+    linear-gradient(135deg, rgba(169,40,34,.08) 0%, transparent 50%),
+    linear-gradient(90deg, rgba(33,31,82,.04) 0%, transparent 60%);
+}
+
+.serviceAreaCluster {
+  border-top: 2px solid rgba(169, 40, 34, 0.1);
+}
+
+.serviceAreaCluster .sectionHead {
+  margin-bottom: 28px;
+}
+
+.serviceAreaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.serviceAreaCard {
+  padding: 20px;
+  background: var(--white);
+  border: 2px solid var(--line);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  transition: all 0.25s ease;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  min-height: 160px;
+}
+
+.serviceAreaCard:hover {
+  border-color: var(--red);
+  box-shadow: 0 24px 70px rgba(169, 40, 34, 0.15);
+  transform: translateY(-2px);
+}
+
+.serviceAreaCard:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
+}
+
+.serviceAreaCard h3 {
+  color: var(--red);
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.serviceAreaCard p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+  flex: 1;
+  margin: 0;
+}
+
+.arrowLink {
+  color: var(--red);
+  font-size: 13px;
+  font-weight: 800;
+  margin-top: 12px;
+  transition: transform 0.2s ease;
+}
+
+.serviceAreaCard:hover .arrowLink {
+  transform: translateX(4px);
+}
+
+.whyAreasSection {
+  background: rgba(33, 31, 82, 0.02);
+}
+
+.twoColumnGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.twoColumnGrid article {
+  padding: 20px;
+  background: var(--white);
+  border-left: 4px solid var(--red);
+  border-radius: 2px;
+}
+
+.twoColumnGrid article h3 {
+  color: var(--navy);
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.twoColumnGrid article p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.areaHero {
+  background:
+    linear-gradient(135deg, rgba(169,40,34,.08) 0%, transparent 40%),
+    linear-gradient(90deg, rgba(33,31,82,.06) 0%, transparent 70%);
+  margin-bottom: 0;
+}
+
+.areaOverview {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.areaOverview .splitPanels {
+  gap: 28px;
+}
+
+.commonProjectsSection,
+.uniqueCharacteristics,
+.serviceIntegration,
+.contactSection,
+.relatedAreas {
+  border-top: 1px solid rgba(23, 23, 41, 0.06);
+}
+
+.serviceIntegration .featureGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.serviceIntegration article {
+  padding: 18px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.serviceIntegration article h3 {
+  color: var(--navy);
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.serviceIntegration article p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .serviceAreaGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .twoColumnGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceIntegration .featureGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .serviceAreaGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .twoColumnGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceIntegration .featureGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Why Choose Us Section */
+.whyChooseUsSection {
+  background: linear-gradient(135deg, rgba(169, 40, 34, 0.04) 0%, rgba(33, 31, 82, 0.02) 100%);
+}
+
+.whyChooseGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.whyChooseCard {
+  padding: 20px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--red);
+  box-shadow: var(--shadow);
+  border-radius: 2px;
+}
+
+.whyChooseCard h3 {
+  color: var(--red);
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.whyChooseCard p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .whyChooseGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .whyChooseGrid {
+    grid-template-columns: 1fr;
+  }
+}
