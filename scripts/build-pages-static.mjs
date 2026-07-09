@@ -21,6 +21,13 @@ for (const asset of ["hmt-logo.jpeg", "hmt-contact-card.jpeg", "favicon.svg", "f
   }
 }
 
+for (const directory of ["projects", "plans", "presentation"]) {
+  const source = join("public", directory);
+  if (existsSync(source)) {
+    cpSync(source, join(outDir, directory), { recursive: true });
+  }
+}
+
 if (existsSync(join("dist", "client", "assets", "_vinext_fonts"))) {
   cpSync(join("dist", "client", "assets", "_vinext_fonts"), join(outDir, "assets", "_vinext_fonts"), {
     recursive: true,
@@ -34,6 +41,91 @@ const whatsAppMessage = encodeURIComponent(
   "Hello Hemant Tambe, I would like to discuss civil work / construction requirements in Pune."
 );
 const whatsappHref = `https://wa.me/919595341818?text=${whatsAppMessage}`;
+const seoKeywords = [
+  "Hemant Maruti Tambe",
+  "HMT",
+  "civil work Pune",
+  "civil contractor Pune",
+  "civil works contractor Pune",
+  "construction contractor Pune",
+  "home contractor Pune",
+  "bungalow contractor Pune",
+  "building contractor Pune",
+  "RCC work Pune",
+  "slab work contractor Pune",
+  "school building contractor Pune",
+  "society project design Pune",
+  "plot development Pune",
+  "architectural planning Pune",
+  "building sanction Pune",
+  "licensing Pune",
+  "Hadapsar civil contractor",
+  "Pune district civil contractor",
+  "Chakan MIDC civil work",
+  "Kharadi construction contractor",
+];
+
+const credentials = [
+  ["Corporate and industrial references", "The latest HMT profile references Amanora City Group, Rieter India Pvt. Ltd., Praj Group, and STIHL Company at Chakan MIDC."],
+  ["Public and institutional exposure", "Portfolio material references PMC, PWD, civil tender participation, school building work, and Wellington College International landscape work."],
+  ["Residential and society work", "Completed bungalows, buildings, Kharadi residential work, Chakan apartment work, renovation, and self-development experience."],
+  ["Local delivery base", "Hadapsar office with project references across Pune city, Pune district, Chakan MIDC, Ambethan MIDC, Kharadi, Narayan Peth, and Sadashiv Peth."],
+];
+
+const portfolioGroups = [
+  {
+    title: "Bungalow and private residential work",
+    text: "Independent homes, private bungalow work, and residential delivery for clients who need one accountable civil engineering partner.",
+    items: [
+      ["Completed bungalow project", "Detached residential construction presented as part of HMT's completed private work.", "/projects/bungalow-project.jpeg"],
+      ["Residential society concept", "Design and massing view used to communicate a housing project before execution.", "/projects/society-project.jpeg"],
+      ["Private residential elevation", "Visual planning reference for facade, scale, and building frontage decisions.", "/projects/society-project-2.jpeg"],
+    ],
+  },
+  {
+    title: "Building and society projects",
+    text: "Multi-storey buildings, apartment work, facade progress, and society-scale construction references.",
+    items: [
+      ["Building project exterior", "Finished or near-finished building elevation from the new project photo set.", "/projects/building-project.jpeg"],
+      ["Urban building frontage", "Project photograph showing compact city-side building execution.", "/projects/building-project-4.jpeg"],
+      ["Society project design", "Residential society design reference for planning discussions and approvals.", "/projects/society-project-3.jpeg"],
+    ],
+  },
+  {
+    title: "Institutional, landscape, and entrance design",
+    text: "School planning, courtyards, entrance treatments, and landscape execution for institutional and campus environments.",
+    items: [
+      ["Entrance design visual", "Rendered entrance treatment showing gateway, access, and landscape intent.", "/projects/entrance-design.jpeg"],
+      ["Completed site frontage", "Photograph from the completed-work set showing clean external presentation.", "/projects/work-completed.jpeg"],
+      ["Pune Metro work reference", "Civil execution and site exposure related to metro or infrastructure surroundings.", "/projects/pune-metro.jpeg"],
+    ],
+  },
+];
+
+const plans = [
+  ["School layout plan", "Proposed Shivaji Vidhyalay and Junior College layout at Dehene, Tal. Khed, Dist. Pune, including classrooms, office, toilets, playground, amphitheatre, parking, and circulation.", "/plans/school-plan.jpg", "/plans/school-plan.pdf"],
+  ["Main building plan", "Main building R1 plan preview for planning, discussion, and development coordination.", "/plans/main-building-plan.jpg", "/plans/main-building-plan.pdf"],
+  ["Entrance design plan", "Entrance R1 design sheet for access, identity, and arrival experience planning.", "/plans/entrance-design.jpg", "/plans/entrance-design.pdf"],
+  ["Courtyard design 1", "Courtyard R1 design preview showing open-space treatment and circulation thinking.", "/plans/courtyard-design-1.jpg", "/plans/courtyard-design-1.pdf"],
+  ["Courtyard design 2", "Second courtyard R1 design option for project comparison and client review.", "/plans/courtyard-design-2.jpg", "/plans/courtyard-design-2.pdf"],
+];
+
+const execution = [
+  ["RCC work", "Reinforced concrete work and site execution detail.", "/projects/rcc-work.jpeg"],
+  ["Slab work", "Slab-stage construction showing structural progress on site.", "/projects/slab-work.jpeg"],
+  ["Under construction", "Ongoing work capture from an active construction stage.", "/projects/under-construction.jpeg"],
+  ["Work in progress", "Progress photograph showing active civil execution and site management.", "/projects/work-in-progress.jpeg"],
+  ["Actual site work", "Field photograph showing practical site activity and delivery work.", "/projects/actual-site-work.jpeg"],
+  ["Pune Metro work", "Infrastructure-adjacent site work reference from the supplied project images.", "/projects/pune-metro-work.jpeg"],
+];
+
+const galleryCards = (items) => items.map(([title, text, image]) => `
+  <article class="galleryCard"><img src="${image}" alt="${title}" loading="lazy"><div><h3>${title}</h3><p>${text}</p></div></article>
+`).join("");
+
+const featureCards = (items) => items.map(([title, text]) => `
+  <article><h3>${title}</h3><p>${text}</p></article>
+`).join("");
 
 const whatsappMark = `
 <span class="whatsappMark" aria-hidden="true">
@@ -50,6 +142,12 @@ const localBusinessSchema = {
   slogan: "Constructing Concepts",
   description: "Civil engineer and civil works contractor serving Pune city and Pune district.",
   image: "/hmt-logo.jpeg",
+  photo: [
+    "/projects/hemant-tambe-profile.jpeg",
+    "/projects/bungalow-project.jpeg",
+    "/projects/building-project.jpeg",
+    "/plans/school-plan.jpg",
+  ],
   telephone: ["+91 9595341818", "+91 9175251338"],
   email: "hemantmarutitambe@gmail.com",
   address: {
@@ -61,6 +159,18 @@ const localBusinessSchema = {
     addressCountry: "IN",
   },
   areaServed: ["Pune city", "Pune district"],
+  serviceType: [
+    "Civil works contracting",
+    "Home construction",
+    "Bungalow construction",
+    "RCC work",
+    "Slab work",
+    "Building sanction support",
+    "Architectural planning and licensing",
+    "School building planning",
+    "Society project design",
+    "Plot development",
+  ],
   founder: {
     "@type": "Person",
     name: "Hemant Maruti Tambe",
@@ -74,8 +184,8 @@ const html = `<!doctype html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hemant Maruti Tambe | HMT Civil Works Contractor Pune</title>
-  <meta name="description" content="Hemant Maruti Tambe is Managing Director of HMT, a civil engineer and civil works contractor serving Pune city and Pune district.">
-  <meta name="keywords" content="Hemant Maruti Tambe,HMT,civil engineer Pune,civil works contractor Pune,construction contractor Pune,architectural planning Pune,licensing Pune,Hadapsar construction contractor">
+  <meta name="description" content="Hemant Maruti Tambe is Managing Director of HMT, a civil engineer and civil works contractor for home construction, bungalow work, RCC work, school planning, building sanction, and civil work across Hadapsar, Pune city, and Pune district.">
+  <meta name="keywords" content="${seoKeywords.join(",")}">
   <meta property="og:title" content="Hemant Maruti Tambe | HMT Civil Works Contractor Pune">
   <meta property="og:description" content="Civil works, construction contracting, development support, architectural planning, and licensing across Pune.">
   <meta property="og:type" content="website">
@@ -91,7 +201,7 @@ const html = `<!doctype html>
   <header class="siteHeader" aria-label="HMT site header">
     <a class="brand" href="#top" aria-label="HMT home"><img src="/hmt-logo.jpeg" alt="HMT Hemant Maruti Tambe logo"></a>
     <nav aria-label="Primary navigation">
-      <a href="#top">Home</a><a href="#profile">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#coverage">Coverage</a><a href="#contact">Contact</a>
+      <a href="#top">Home</a><a href="#profile">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#plans">Plans</a><a href="#coverage">Coverage</a><a href="#contact">Contact</a>
     </nav>
     <a class="headerCta" href="${whatsappHref}" target="_blank" rel="noreferrer">${whatsappMark} WhatsApp</a>
   </header>
@@ -117,11 +227,27 @@ const html = `<!doctype html>
     <div><p class="eyebrow">Company Profile</p><h2>Reliable civil work leadership for Pune projects.</h2></div>
     <p>HMT works with property owners, developers, promoters, and project partners who need dependable construction execution and practical coordination from early concept through site work. The firm is led by Hemant Maruti Tambe, Managing Director, with a focus on disciplined delivery in Pune.</p>
   </section>
+  <section class="band profileFeature">
+    <figure><img src="/projects/hemant-tambe-profile.jpeg" alt="Hemant Maruti Tambe, Managing Director of HMT"></figure>
+    <div>
+      <p class="eyebrow">Leadership</p><h2>B.E. Civil leadership with an independent construction business since 2009.</h2>
+      <div class="statGrid">
+        <article><strong>2006</strong><span>B.E. Civil completed</span></article>
+        <article><strong>2009</strong><span>Independent business started</span></article>
+        <article><strong>32+</strong><span>Completed bungalows</span></article>
+        <article><strong>9+</strong><span>Completed buildings</span></article>
+      </div>
+    </div>
+  </section>
   <section class="band" id="services">
     <div class="sectionHead"><p class="eyebrow">Services</p><h2>Construction, planning, and civil execution support.</h2></div>
     <div class="serviceGrid">
-      ${["Civil works contracting", "Construction contractor services", "Development and promoter coordination", "Architectural planning and licensing", "Site execution and supervision", "Pune city and Pune district projects"].map((service) => `<article><span aria-hidden="true"></span><h3>${service}</h3></article>`).join("")}
+      ${["Civil works contracting", "Home and bungalow construction", "RCC, slab, and site execution", "Development and promoter coordination", "Architectural planning and licensing", "School, society, and Pune district projects"].map((service) => `<article><span aria-hidden="true"></span><h3>${service}</h3></article>`).join("")}
     </div>
+  </section>
+  <section class="band credentialsBand">
+    <div class="sectionHead"><p class="eyebrow">Clients and Work References</p><h2>Experience across private, institutional, industrial, and government-linked work.</h2></div>
+    <div class="featureGrid">${featureCards(credentials)}</div>
   </section>
   <section class="band split">
     <div><p class="eyebrow">Why HMT</p><h2>Grounded in local site realities.</h2></div>
@@ -134,11 +260,22 @@ const html = `<!doctype html>
       ].map(([title, text]) => `<article><h3>${title}</h3><p>${text}</p></article>`).join("")}
     </div>
   </section>
-  <section class="band workTypes" id="projects">
-    <div class="sectionHead"><p class="eyebrow">Project Types</p><h2>Built for owners, developers, and promoters.</h2></div>
-    <div class="pillGrid">
-      ${["Residential construction", "Commercial civil works", "Renovation and improvement work", "Developer and promoter projects", "Architectural planning support", "Licensing and municipal coordination"].map((type) => `<span>${type}</span>`).join("")}
+  <section class="band portfolioBand" id="projects">
+    <div class="sectionHead"><p class="eyebrow">Portfolio Groups</p><h2>Built work, design intent, and site execution grouped by project type.</h2></div>
+    <div class="portfolioGroups">
+      ${portfolioGroups.map((group) => `<section class="portfolioGroup"><div class="portfolioGroupIntro"><h3>${group.title}</h3><p>${group.text}</p></div><div class="galleryGrid">${galleryCards(group.items)}</div></section>`).join("")}
     </div>
+  </section>
+  <section class="band planBand" id="plans">
+    <div class="sectionHead"><p class="eyebrow">Drawings and Design Sheets</p><h2>Plan previews for school, courtyard, entrance, and building design work.</h2></div>
+    <p class="sectionLead">The supplied PDFs are drawing-heavy sheets, so they are presented as visual previews with downloadable source files for clients and project partners.</p>
+    <div class="planGrid">
+      ${plans.map(([title, text, image, file]) => `<article class="planCard"><a href="${file}" target="_blank" rel="noreferrer"><img src="${image}" alt="${title}" loading="lazy"></a><div><h3>${title}</h3><p>${text}</p><a href="${file}" target="_blank" rel="noreferrer">Open PDF</a></div></article>`).join("")}
+    </div>
+  </section>
+  <section class="band executionBand">
+    <div class="sectionHead"><p class="eyebrow">Site Execution</p><h2>RCC, slab, progress, and infrastructure-site work shown from the field.</h2></div>
+    <div class="galleryGrid">${galleryCards(execution)}</div>
   </section>
   <section class="band coverage" id="coverage">
     <div class="sectionHead"><p class="eyebrow">Service Area</p><h2>Focused on Pune city and Pune district.</h2></div>
@@ -162,7 +299,7 @@ const html = `<!doctype html>
       <iframe title="HMT office location on Google Maps" src="https://www.google.com/maps?q=${mapQuery}&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </section>
-  <footer><div><span>HMT Hemant Maruti Tambe</span><span>Constructing Concepts</span></div><nav aria-label="Footer navigation"><a href="#top">Home</a><a href="#profile">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#coverage">Coverage</a><a href="#contact">Contact</a><a href="/sitemap.xml">Sitemap</a></nav></footer>
+  <footer><div><span>HMT Hemant Maruti Tambe</span><span>Constructing Concepts</span></div><nav aria-label="Footer navigation"><a href="#top">Home</a><a href="#profile">About</a><a href="#services">Services</a><a href="#projects">Projects</a><a href="#plans">Plans</a><a href="#coverage">Coverage</a><a href="#contact">Contact</a><a href="/sitemap.xml">Sitemap</a></nav></footer>
 </main>
 </body>
 </html>`;
@@ -171,5 +308,5 @@ writeFileSync(join(outDir, "index.html"), html);
 writeFileSync(join(outDir, "robots.txt"), "User-agent: *\nAllow: /\nSitemap: /sitemap.xml\n");
 writeFileSync(
   join(outDir, "sitemap.xml"),
-  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://hmtambe.com</loc><lastmod>2026-06-22</lastmod><changefreq>monthly</changefreq><priority>1</priority></url></urlset>\n`
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://hmtambe.com</loc><lastmod>2026-07-09</lastmod><changefreq>monthly</changefreq><priority>1</priority></url></urlset>\n`
 );

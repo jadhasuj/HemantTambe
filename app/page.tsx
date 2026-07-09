@@ -18,6 +18,16 @@ type Project = {
   image: string;
 };
 
+type PlanItem = Project & {
+  file: string;
+};
+
+type PortfolioGroup = {
+  title: string;
+  text: string;
+  items: Project[];
+};
+
 type Content = {
   nav: {
     home: string;
@@ -25,6 +35,7 @@ type Content = {
     services: string;
     work: string;
     projects: string;
+    plans: string;
     contact: string;
   };
   actions: {
@@ -89,6 +100,27 @@ type Content = {
     canConnect: string[];
     lookingForTitle: string;
     lookingFor: string[];
+  };
+  credentials: {
+    eyebrow: string;
+    title: string;
+    items: Feature[];
+  };
+  portfolio: {
+    eyebrow: string;
+    title: string;
+    groups: PortfolioGroup[];
+  };
+  plans: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    items: PlanItem[];
+  };
+  execution: {
+    eyebrow: string;
+    title: string;
+    items: Project[];
   };
   projects: {
     eyebrow: string;
@@ -230,6 +262,7 @@ const content: Record<Locale, Content> = {
       services: "Services",
       work: "How We Work",
       projects: "Projects",
+      plans: "Plans",
       contact: "Contact",
     },
     actions: {
@@ -385,6 +418,171 @@ const content: Record<Locale, Content> = {
         "Companies expecting civil or construction-related work",
       ],
     },
+    credentials: {
+      eyebrow: "Clients and Work References",
+      title: "Experience across private, institutional, industrial, and government-linked work.",
+      items: [
+        {
+          title: "Corporate and industrial references",
+          text: "The latest HMT profile references Amanora City Group, Rieter India Pvt. Ltd., Praj Group, and STIHL Company at Chakan MIDC.",
+        },
+        {
+          title: "Public and institutional exposure",
+          text: "Portfolio material references PMC, PWD, civil tender participation, school building work, and Wellington College International landscape work.",
+        },
+        {
+          title: "Residential and society work",
+          text: "HMT presents completed bungalows, buildings, Kharadi residential work, Chakan apartment work, renovation, and self-development experience.",
+        },
+        {
+          title: "Local delivery base",
+          text: "The office is in Hadapsar, with work references across Pune city, Pune district, Chakan MIDC, Ambethan MIDC, Kharadi, Narayan Peth, and Sadashiv Peth.",
+        },
+      ],
+    },
+    portfolio: {
+      eyebrow: "Portfolio Groups",
+      title: "Built work, design intent, and site execution grouped by project type.",
+      groups: [
+        {
+          title: "Bungalow and private residential work",
+          text: "Independent homes, private bungalow work, and residential delivery for clients who need one accountable civil engineering partner.",
+          items: [
+            {
+              title: "Completed bungalow project",
+              text: "Detached residential construction presented as part of HMT's completed private work.",
+              image: "/projects/bungalow-project.jpeg",
+            },
+            {
+              title: "Residential society concept",
+              text: "Design and massing view used to communicate a housing project before execution.",
+              image: "/projects/society-project.jpeg",
+            },
+            {
+              title: "Private residential elevation",
+              text: "Visual planning reference for façade, scale, and building frontage decisions.",
+              image: "/projects/society-project-2.jpeg",
+            },
+          ],
+        },
+        {
+          title: "Building and society projects",
+          text: "Multi-storey buildings, apartment work, façade progress, and society-scale construction references.",
+          items: [
+            {
+              title: "Building project exterior",
+              text: "Finished or near-finished building elevation from the new project photo set.",
+              image: "/projects/building-project.jpeg",
+            },
+            {
+              title: "Urban building frontage",
+              text: "Project photograph showing compact city-side building execution.",
+              image: "/projects/building-project-4.jpeg",
+            },
+            {
+              title: "Society project design",
+              text: "Residential society design reference for planning discussions and approvals.",
+              image: "/projects/society-project-3.jpeg",
+            },
+          ],
+        },
+        {
+          title: "Institutional, landscape, and entrance design",
+          text: "School planning, courtyards, entrance treatments, and landscape execution for institutional and campus environments.",
+          items: [
+            {
+              title: "Entrance design visual",
+              text: "Rendered entrance treatment showing gateway, access, and landscape intent.",
+              image: "/projects/entrance-design.jpeg",
+            },
+            {
+              title: "Completed site frontage",
+              text: "Photograph from the completed-work set showing clean external presentation.",
+              image: "/projects/work-completed.jpeg",
+            },
+            {
+              title: "Pune Metro work reference",
+              text: "Civil execution and site exposure related to metro or infrastructure surroundings.",
+              image: "/projects/pune-metro.jpeg",
+            },
+          ],
+        },
+      ],
+    },
+    plans: {
+      eyebrow: "Drawings and Design Sheets",
+      title: "Plan previews for school, courtyard, entrance, and building design work.",
+      body:
+        "The supplied PDFs are drawing-heavy sheets, so they are presented as visual previews with downloadable source files for clients and project partners.",
+      items: [
+        {
+          title: "School layout plan",
+          text: "Proposed Shivaji Vidhyalay and Junior College layout at Dehene, Tal. Khed, Dist. Pune, including classrooms, office, toilets, playground, amphitheatre, parking, and circulation.",
+          image: "/plans/school-plan.jpg",
+          file: "/plans/school-plan.pdf",
+        },
+        {
+          title: "Main building plan",
+          text: "Main building R1 plan preview for planning, discussion, and development coordination.",
+          image: "/plans/main-building-plan.jpg",
+          file: "/plans/main-building-plan.pdf",
+        },
+        {
+          title: "Entrance design plan",
+          text: "Entrance R1 design sheet for access, identity, and arrival experience planning.",
+          image: "/plans/entrance-design.jpg",
+          file: "/plans/entrance-design.pdf",
+        },
+        {
+          title: "Courtyard design 1",
+          text: "Courtyard R1 design preview showing open-space treatment and circulation thinking.",
+          image: "/plans/courtyard-design-1.jpg",
+          file: "/plans/courtyard-design-1.pdf",
+        },
+        {
+          title: "Courtyard design 2",
+          text: "Second courtyard R1 design option for project comparison and client review.",
+          image: "/plans/courtyard-design-2.jpg",
+          file: "/plans/courtyard-design-2.pdf",
+        },
+      ],
+    },
+    execution: {
+      eyebrow: "Site Execution",
+      title: "RCC, slab, progress, and infrastructure-site work shown from the field.",
+      items: [
+        {
+          title: "RCC work",
+          text: "Reinforced concrete work and site execution detail.",
+          image: "/projects/rcc-work.jpeg",
+        },
+        {
+          title: "Slab work",
+          text: "Slab-stage construction showing structural progress on site.",
+          image: "/projects/slab-work.jpeg",
+        },
+        {
+          title: "Under construction",
+          text: "Ongoing work capture from an active construction stage.",
+          image: "/projects/under-construction.jpeg",
+        },
+        {
+          title: "Work in progress",
+          text: "Progress photograph showing active civil execution and site management.",
+          image: "/projects/work-in-progress.jpeg",
+        },
+        {
+          title: "Actual site work",
+          text: "Field photograph showing practical site activity and delivery work.",
+          image: "/projects/actual-site-work.jpeg",
+        },
+        {
+          title: "Pune Metro work",
+          text: "Infrastructure-adjacent site work reference from the supplied project images.",
+          image: "/projects/pune-metro-work.jpeg",
+        },
+      ],
+    },
     projects: {
       eyebrow: "Project Gallery",
       title: "Rendered concepts, active sites, and completed work from the presentation.",
@@ -465,6 +663,7 @@ const content: Record<Locale, Content> = {
       services: "सेवा",
       work: "कामाची पद्धत",
       projects: "प्रकल्प",
+      plans: "नकाशे",
       contact: "संपर्क",
     },
     actions: {
@@ -621,6 +820,171 @@ const content: Record<Locale, Content> = {
         "ज्यांना सिव्हिल वर्क्स किंवा बांधकामाशी संबंधित कामे आहेत",
       ],
     },
+    credentials: {
+      eyebrow: "क्लायंट आणि कामाचे संदर्भ",
+      title: "वैयक्तिक, संस्थात्मक, औद्योगिक आणि सरकारी संबंधित कामांचा अनुभव.",
+      items: [
+        {
+          title: "कॉर्पोरेट आणि औद्योगिक संदर्भ",
+          text: "नवीन HMT प्रोफाइलमध्ये Amanora City Group, Rieter India Pvt. Ltd., Praj Group आणि Chakan MIDC मधील STIHL Company यांचा संदर्भ आहे.",
+        },
+        {
+          title: "सरकारी आणि संस्थात्मक अनुभव",
+          text: "प्रोफाइलमध्ये PMC, PWD, टेंडर कामे, शाळेची इमारत आणि Wellington College International लँडस्केप कामाचा उल्लेख आहे.",
+        },
+        {
+          title: "निवासी आणि सोसायटी कामे",
+          text: "पूर्ण बंगले, इमारती, Kharadi निवासी काम, Chakan अपार्टमेंट काम, रिनोवेशन आणि स्वतःच्या डेव्हलपमेंटचा अनुभव दाखवला आहे.",
+        },
+        {
+          title: "स्थानिक पुणे बेस",
+          text: "ऑफिस हडपसर येथे असून पुणे शहर, पुणे जिल्हा, Chakan MIDC, Ambethan MIDC, Kharadi, Narayan Peth आणि Sadashiv Peth येथील कामांचे संदर्भ आहेत.",
+        },
+      ],
+    },
+    portfolio: {
+      eyebrow: "पोर्टफोलिओ गट",
+      title: "प्रकल्पाच्या प्रकारानुसार बांधकाम, डिझाइन आणि साइट काम.",
+      groups: [
+        {
+          title: "बंगले आणि वैयक्तिक निवासी कामे",
+          text: "स्वतंत्र घर, बंगला आणि निवासी बांधकामासाठी एक जबाबदार सिव्हिल इंजिनिअरिंग भागीदार.",
+          items: [
+            {
+              title: "पूर्ण बंगला प्रकल्प",
+              text: "HMT च्या पूर्ण वैयक्तिक निवासी कामांमधील स्वतंत्र घराचे उदाहरण.",
+              image: "/projects/bungalow-project.jpeg",
+            },
+            {
+              title: "निवासी सोसायटी संकल्पचित्र",
+              text: "काम सुरू होण्यापूर्वी प्रकल्पाची मांडणी आणि प्रमाण समजावणारे दृश्य.",
+              image: "/projects/society-project.jpeg",
+            },
+            {
+              title: "वैयक्तिक निवासी बाह्य दृश्य",
+              text: "फसाड, स्केल आणि फ्रंटेज निर्णयांसाठी वापरलेला डिझाइन संदर्भ.",
+              image: "/projects/society-project-2.jpeg",
+            },
+          ],
+        },
+        {
+          title: "इमारत आणि सोसायटी प्रकल्प",
+          text: "मल्टिस्टोरी इमारती, अपार्टमेंट काम, फसाड प्रगती आणि सोसायटी स्केल बांधकाम संदर्भ.",
+          items: [
+            {
+              title: "इमारत प्रकल्प बाह्य दृश्य",
+              text: "नवीन प्रकल्प फोटो सेटमधील पूर्ण किंवा पूर्णतेकडे असलेले इमारत दृश्य.",
+              image: "/projects/building-project.jpeg",
+            },
+            {
+              title: "शहरी इमारत फ्रंटेज",
+              text: "कॉम्पॅक्ट शहरातील बांधकाम अंमलबजावणी दाखवणारे छायाचित्र.",
+              image: "/projects/building-project-4.jpeg",
+            },
+            {
+              title: "सोसायटी प्रकल्प डिझाइन",
+              text: "मंजुरी, नियोजन आणि ग्राहक चर्चेसाठी निवासी सोसायटी डिझाइन संदर्भ.",
+              image: "/projects/society-project-3.jpeg",
+            },
+          ],
+        },
+        {
+          title: "संस्थात्मक, लँडस्केप आणि प्रवेश डिझाइन",
+          text: "शाळा नियोजन, कोर्टयार्ड, प्रवेशद्वार आणि संस्थात्मक परिसरांसाठी लँडस्केप काम.",
+          items: [
+            {
+              title: "प्रवेश डिझाइन दृश्य",
+              text: "गेटवे, प्रवेश आणि लँडस्केप कल्पना दाखवणारे रेंडर.",
+              image: "/projects/entrance-design.jpeg",
+            },
+            {
+              title: "पूर्ण साइट फ्रंटेज",
+              text: "पूर्ण कामाच्या संचातील स्वच्छ बाह्य सादरीकरण दाखवणारे छायाचित्र.",
+              image: "/projects/work-completed.jpeg",
+            },
+            {
+              title: "Pune Metro कामाचा संदर्भ",
+              text: "मेट्रो किंवा इन्फ्रास्ट्रक्चर परिसरातील सिव्हिल कामाचा संदर्भ.",
+              image: "/projects/pune-metro.jpeg",
+            },
+          ],
+        },
+      ],
+    },
+    plans: {
+      eyebrow: "नकाशे आणि डिझाइन शीट्स",
+      title: "शाळा, कोर्टयार्ड, प्रवेश आणि मुख्य इमारतीचे नकाशे.",
+      body:
+        "पुरवलेले PDF नकाशे मुख्यतः ड्रॉइंग-आधारित आहेत, म्हणून ग्राहक आणि प्रकल्प भागीदारांसाठी ते प्रिव्ह्यू आणि डाउनलोड स्वरूपात दिले आहेत.",
+      items: [
+        {
+          title: "शाळेचा लेआउट प्लॅन",
+          text: "देहेणे, ता. खेड, जि. पुणे येथील प्रस्तावित Shivaji Vidhyalay आणि Junior College लेआउट, ज्यात वर्ग, ऑफिस, स्वच्छतागृह, खेळाचे मैदान, amphitheatre, पार्किंग आणि circulation आहे.",
+          image: "/plans/school-plan.jpg",
+          file: "/plans/school-plan.pdf",
+        },
+        {
+          title: "मुख्य इमारत प्लॅन",
+          text: "नियोजन, चर्चा आणि डेव्हलपमेंट समन्वयासाठी Main Building R1 प्लॅन प्रिव्ह्यू.",
+          image: "/plans/main-building-plan.jpg",
+          file: "/plans/main-building-plan.pdf",
+        },
+        {
+          title: "प्रवेश डिझाइन प्लॅन",
+          text: "प्रवेश, ओळख आणि arrival experience नियोजनासाठी Entrance R1 डिझाइन शीट.",
+          image: "/plans/entrance-design.jpg",
+          file: "/plans/entrance-design.pdf",
+        },
+        {
+          title: "कोर्टयार्ड डिझाइन १",
+          text: "ओपन स्पेस आणि circulation विचार दाखवणारा Courtyard R1 प्रिव्ह्यू.",
+          image: "/plans/courtyard-design-1.jpg",
+          file: "/plans/courtyard-design-1.pdf",
+        },
+        {
+          title: "कोर्टयार्ड डिझाइन २",
+          text: "प्रकल्प तुलना आणि ग्राहक चर्चेसाठी दुसरा Courtyard R1 पर्याय.",
+          image: "/plans/courtyard-design-2.jpg",
+          file: "/plans/courtyard-design-2.pdf",
+        },
+      ],
+    },
+    execution: {
+      eyebrow: "साइट अंमलबजावणी",
+      title: "RCC, स्लॅब, प्रगती आणि इन्फ्रास्ट्रक्चर साइटवरील काम.",
+      items: [
+        {
+          title: "RCC काम",
+          text: "Reinforced concrete काम आणि प्रत्यक्ष साइट execution detail.",
+          image: "/projects/rcc-work.jpeg",
+        },
+        {
+          title: "स्लॅब काम",
+          text: "स्ट्रक्चरल प्रगती दाखवणारे slab-stage construction.",
+          image: "/projects/slab-work.jpeg",
+        },
+        {
+          title: "बांधकाम सुरू",
+          text: "सक्रिय बांधकाम टप्प्यातील साइट फोटो.",
+          image: "/projects/under-construction.jpeg",
+        },
+        {
+          title: "काम प्रगतीत",
+          text: "साइट मॅनेजमेंट आणि सिव्हिल execution दाखवणारा फोटो.",
+          image: "/projects/work-in-progress.jpeg",
+        },
+        {
+          title: "प्रत्यक्ष साइट काम",
+          text: "फील्डवरील काम आणि delivery activity दाखवणारा फोटो.",
+          image: "/projects/actual-site-work.jpeg",
+        },
+        {
+          title: "Pune Metro काम",
+          text: "पुरवलेल्या project images मधील infrastructure-adjacent site work संदर्भ.",
+          image: "/projects/pune-metro-work.jpeg",
+        },
+      ],
+    },
     projects: {
       eyebrow: "प्रकल्प आणि छायाचित्रे",
       title: "सादरीकरणातील संकल्पचित्रे, सुरू असलेली कामे आणि पूर्ण कामे.",
@@ -683,9 +1047,9 @@ const content: Record<Locale, Content> = {
       title: "मंजुरी, कॉन्ट्रॅक्ट, डेव्हलपमेंट किंवा संपूर्ण बांधकामासाठी संपर्क करा.",
       role: "व्यवस्थापकीय संचालक, HMT",
       addressLines: [
-        "ऑफिस नं. १०, पंचवटी कॉम्प्लेक्स",
-        "वैभव थिएटर जवळ, हडपसर",
-        "पुणे ४११०२८",
+        "पंचावटी कॉम्प्लेक्स",
+        "हडपसर गाव, हडपसर",
+        "पुणे, महाराष्ट्र ४११०२८",
       ],
     },
     footer: {
@@ -758,7 +1122,7 @@ export default function Home() {
   const whatsAppMessage = encodeURIComponent(whatsAppMessages[locale]);
 
   useEffect(() => {
-    const sectionIds = ["top", "profile", "services", "work", "projects", "contact"];
+    const sectionIds = ["top", "profile", "services", "work", "projects", "plans", "contact"];
 
     const updateActiveRoute = () => {
       const marker = window.scrollY + 140;
@@ -807,6 +1171,7 @@ export default function Home() {
           <a href="#services" aria-current={activeRoute === "services" ? "page" : undefined}>{copy.nav.services}</a>
           <a href="#work" aria-current={activeRoute === "work" ? "page" : undefined}>{copy.nav.work}</a>
           <a href="#projects" aria-current={activeRoute === "projects" ? "page" : undefined}>{copy.nav.projects}</a>
+          <a href="#plans" aria-current={activeRoute === "plans" ? "page" : undefined}>{copy.nav.plans}</a>
           <a href="#contact" aria-current={activeRoute === "contact" ? "page" : undefined}>{copy.nav.contact}</a>
         </nav>
 
@@ -890,6 +1255,46 @@ export default function Home() {
         <p>{copy.intro.body}</p>
       </section>
 
+      <section className="band profileFeature" aria-labelledby="profileFeatureHeading">
+        <figure>
+          <img
+            src="/projects/hemant-tambe-profile.jpeg"
+            alt="Hemant Maruti Tambe, Managing Director of HMT"
+          />
+        </figure>
+        <div>
+          <p className="eyebrow" id="profileFeatureHeading">
+            {locale === "mr" ? "नेतृत्व" : "Leadership"}
+          </p>
+          <h2>
+            {locale === "mr"
+              ? "बी. ई. सिव्हिल शिक्षण आणि २००९ पासून स्वतःचा बांधकाम व्यवसाय."
+              : "B.E. Civil leadership with an independent construction business since 2009."}
+          </h2>
+          <div className="statGrid">
+            {(locale === "mr"
+              ? [
+                  ["२००६", "बी. ई. सिव्हिल शिक्षण पूर्ण"],
+                  ["२००९", "स्वतःचा व्यवसाय सुरू"],
+                  ["३२+", "पूर्ण बंगले"],
+                  ["९+", "पूर्ण इमारती"],
+                ]
+              : [
+                  ["2006", "B.E. Civil completed"],
+                  ["2009", "Independent business started"],
+                  ["32+", "Completed bungalows"],
+                  ["9+", "Completed buildings"],
+                ]
+            ).map(([value, label]) => (
+              <article key={label}>
+                <strong>{value}</strong>
+                <span>{label}</span>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="band" id="services" aria-labelledby="servicesHeading">
         <div className="sectionHead">
           <p className="eyebrow" id="servicesHeading">{copy.services.eyebrow}</p>
@@ -900,6 +1305,21 @@ export default function Home() {
             <article key={item}>
               <span aria-hidden="true" />
               <h3>{item}</h3>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="band credentialsBand" aria-labelledby="credentialsHeading">
+        <div className="sectionHead">
+          <p className="eyebrow" id="credentialsHeading">{copy.credentials.eyebrow}</p>
+          <h2>{copy.credentials.title}</h2>
+        </div>
+        <div className="featureGrid">
+          {copy.credentials.items.map((item) => (
+            <article key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
             </article>
           ))}
         </div>
@@ -1083,7 +1503,77 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band galleryBand" id="projects" aria-labelledby="projectsHeading">
+      <section className="band portfolioBand" id="projects" aria-labelledby="portfolioHeading">
+        <div className="sectionHead">
+          <p className="eyebrow" id="portfolioHeading">{copy.portfolio.eyebrow}</p>
+          <h2>{copy.portfolio.title}</h2>
+        </div>
+        <div className="portfolioGroups">
+          {copy.portfolio.groups.map((group) => (
+            <section className="portfolioGroup" key={group.title} aria-label={group.title}>
+              <div className="portfolioGroupIntro">
+                <h3>{group.title}</h3>
+                <p>{group.text}</p>
+              </div>
+              <div className="galleryGrid">
+                {group.items.map((item) => (
+                  <article className="galleryCard" key={item.title}>
+                    <img src={item.image} alt={item.title} loading="lazy" />
+                    <div>
+                      <h3>{item.title}</h3>
+                      <p>{item.text}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      </section>
+
+      <section className="band planBand" id="plans" aria-labelledby="plansHeading">
+        <div className="sectionHead">
+          <p className="eyebrow" id="plansHeading">{copy.plans.eyebrow}</p>
+          <h2>{copy.plans.title}</h2>
+        </div>
+        <p className="sectionLead">{copy.plans.body}</p>
+        <div className="planGrid">
+          {copy.plans.items.map((item) => (
+            <article className="planCard" key={item.title}>
+              <a href={item.file} target="_blank" rel="noopener noreferrer">
+                <img src={item.image} alt={item.title} loading="lazy" />
+              </a>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+                <a href={item.file} target="_blank" rel="noopener noreferrer">
+                  {locale === "mr" ? "PDF उघडा" : "Open PDF"}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="band executionBand" aria-labelledby="executionHeading">
+        <div className="sectionHead">
+          <p className="eyebrow" id="executionHeading">{copy.execution.eyebrow}</p>
+          <h2>{copy.execution.title}</h2>
+        </div>
+        <div className="galleryGrid">
+          {copy.execution.items.map((item) => (
+            <article className="galleryCard" key={item.title}>
+              <img src={item.image} alt={item.title} loading="lazy" />
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="band galleryBand" id="presentation-gallery" aria-labelledby="projectsHeading">
         <div className="sectionHead">
           <p className="eyebrow" id="projectsHeading">{copy.projects.eyebrow}</p>
           <h2>{copy.projects.title}</h2>
@@ -1179,6 +1669,7 @@ export default function Home() {
           <a href="#services">{copy.nav.services}</a>
           <a href="#work">{copy.nav.work}</a>
           <a href="#projects">{copy.nav.projects}</a>
+          <a href="#plans">{copy.nav.plans}</a>
           <a href="#contact">{copy.nav.contact}</a>
           <a href="/sitemap.xml">Sitemap</a>
         </nav>
