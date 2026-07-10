@@ -228,13 +228,13 @@ const html = `<!doctype html>
       <p>Construction Contractor | Developer | Promoter</p>
       <p>Architectural Planning and Licensing</p>
     </aside>
-    <div class="heroThumbStrip" aria-label="Completed project thumbnails">
+    <div class="project-grid heroThumbStrip" aria-label="Completed building thumbnails">
       ${[
-        ["/projects/building-project.jpeg", "Building"],
-        ["/projects/bungalow-project.jpeg", "Bungalow"],
-        ["/projects/work-completed.jpeg", "Completed"],
-        ["/projects/hemant-tambe-profile.jpeg", "Lead"],
-      ].map(([src, label]) => `<figure><img src="${src}" alt="${label} project thumbnail" loading="lazy"><figcaption>${label}</figcaption></figure>`).join("")}
+        "/presentation/residential-render.jpeg",
+        "/projects/building-project-4.jpeg",
+        "/projects/building-project.jpeg",
+        "/projects/society-project-3.jpeg",
+      ].map((src) => `<article class="project-card"><div class="thumbnail-wrapper"><img class="project-thumbnail" src="${src}" alt="Completed building thumbnail" loading="lazy"><span class="project-status">Completed</span></div></article>`).join("")}
     </div>
   </section>
   <section class="band intro" id="profile">
@@ -282,7 +282,6 @@ const html = `<!doctype html>
   </section>
   <section class="band planBand" id="plans">
     <div class="sectionHead"><p class="eyebrow">Drawings and Design Sheets</p><h2>Plan previews for school, courtyard, entrance, and building design work.</h2></div>
-    <p class="sectionLead">The supplied PDFs are drawing-heavy sheets, so they are presented as visual previews with downloadable source files for clients and project partners.</p>
     <div class="planGrid">
       ${plans.map(([title, text, image, file]) => `<article class="planCard"><a href="${file}" target="_blank" rel="noreferrer"><img src="${image}" alt="${title}" loading="lazy"></a><div><h3>${title}</h3><p>${text}</p><a href="${file}" target="_blank" rel="noreferrer">Open PDF</a></div></article>`).join("")}
     </div>
@@ -290,6 +289,17 @@ const html = `<!doctype html>
   <section class="band executionBand">
     <div class="sectionHead"><p class="eyebrow">Site Execution</p><h2>RCC, slab, progress, and infrastructure-site work shown from the field.</h2></div>
     <div class="galleryGrid">${galleryCards(execution)}</div>
+  </section>
+  <section class="band scgtBand">
+    <div class="sectionHead"><h2>School, campus, housing, and site progression from the original presentation.</h2></div>
+    <div class="featureGrid scgtGrid">
+      ${[
+        ["Campus building", "Completed campus building and concept render views used in the original deck.", "/presentation/concept-render-campus.jpeg"],
+        ["Housing block", "Large housing block and apartment facade progression from the slide set.", "/presentation/large-housing-block.jpeg"],
+        ["Site sequence", "Excavation, structural progress, facade finish, and completed bungalow views from the presentation photos.", "/presentation/excavation-work.jpeg"],
+        ["School planning", "Shivaji Vidhyalay and Junior College layout at Dehene, Tal. Khed, Dist. Pune with classrooms, office, toilets, playground, amphitheatre, parking, and circulation planning.", "/plans/school-plan.jpg"],
+      ].map(([title, text, image]) => `<article class="galleryCard"><img src="${image}" alt="${title}" loading="lazy"><div><h3>${title}</h3><p>${text}</p></div></article>`).join("")}
+    </div>
   </section>
   <section class="band coverage" id="coverage">
     <div class="sectionHead"><p class="eyebrow">Service Area</p><h2>Focused on Pune city and Pune district.</h2></div>

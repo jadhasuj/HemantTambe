@@ -202,8 +202,9 @@ nav a {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(280px, 390px);
   align-items: center;
-  gap: clamp(24px, 5vw, 72px);
-  padding: clamp(28px, 4vw, 52px) clamp(18px, 5vw, 76px) clamp(36px, 5vw, 58px);
+  column-gap: clamp(24px, 5vw, 72px);
+  row-gap: 10px;
+  padding: clamp(12px, 2vw, 28px) clamp(18px, 5vw, 76px) clamp(18px, 2vw, 30px);
   overflow: hidden;
   background:
     linear-gradient(110deg, rgba(255,255,255,.98) 0%, rgba(246,248,252,.95) 50%, rgba(230,236,246,.98) 100%),
@@ -225,7 +226,7 @@ nav a {
 
 .hero {
   min-height: auto;
-  padding-bottom: clamp(24px, 3vw, 42px);
+  padding-bottom: 20px;
 }
 
 .eyebrow {
@@ -253,10 +254,19 @@ h1 {
   line-height: 1.12;
 }
 h2 {
-  margin-bottom: 0;
-  font-size: clamp(24px, 3.6vw, 36px);
-  line-height: 1.2;
+  margin: 0 0 2px;
+  font-size: clamp(13px, 1vw, 17px);
+  line-height: 1.08;
   color: var(--navy);
+  white-space: nowrap;
+}
+
+:lang(mr) h2 {
+  white-space: normal;
+  font-size: clamp(13px, 1.25vw, 16px);
+  line-height: 1.25;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 h3 {
   margin-bottom: 8px;
@@ -410,9 +420,9 @@ h3 {
 
 .heroPanel strong {
   display: block;
-  margin: 10px 0 14px;
+  margin: 8px 0 10px;
   color: var(--navy);
-  font-size: clamp(20px, 2.2vw, 24px);
+  font-size: clamp(18px, 1.8vw, 21px);
   font-style: italic;
 }
 
@@ -425,39 +435,74 @@ h3 {
   font-weight: 500;
 }
 
-.heroThumbStrip {
+.project-grid {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 2px;
+}
+
+.heroThumbStrip {
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
   gap: 10px;
-  margin-top: 8px;
+  margin-top: 0;
 }
 
-.heroThumbStrip figure {
-  margin: 0;
+.heroThumbStrip .project-card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.project-card {
   overflow: hidden;
-  background: var(--white);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.heroThumbStrip img {
-  display: block;
+.project-card:hover,
+.project-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.thumbnail-wrapper {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.project-thumbnail {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-.heroThumbStrip figcaption {
-  padding: 8px 10px 10px;
-  color: var(--navy);
-  font-size: 12px;
-  font-weight: 800;
+.project-status {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 5px 8px;
+  background: rgba(10, 37, 64, 0.9);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 2px;
 }
 
 .band,
 .contactBand {
-  padding: clamp(34px, 4vw, 52px) clamp(18px, 5vw, 72px);
+  padding: clamp(14px, 1.6vw, 24px) clamp(14px, 3vw, 48px);
+}
+
+.scgtBand {
+  padding-top: 4px;
+  padding-bottom: 12px;
 }
 
 .band {
@@ -475,7 +520,8 @@ h3 {
 
 .sectionHead {
   align-items: start;
-  gap: clamp(18px, 3vw, 42px);
+  gap: clamp(10px, 1.5vw, 18px);
+  margin-bottom: 8px;
 }
 
 .sectionHead .eyebrow {
@@ -484,12 +530,51 @@ h3 {
 
 .sectionHead h2 {
   text-wrap: balance;
+  margin-bottom: 0;
+}
+
+.serviceTitle {
+  font-size: inherit;
+  line-height: inherit;
+  margin-bottom: 0;
+}
+
+.scgtTitle {
+  font-size: inherit;
+  line-height: inherit;
+  margin-bottom: 0;
+  max-width: none;
+}
+
+@media (max-width: 900px) {
+  h2 {
+    white-space: normal;
+    font-size: clamp(13px, 2vw, 16px);
+  }
+
+  :lang(mr) h2 {
+    font-size: clamp(13px, 2vw, 16px);
+  }
 }
 
 .intro p:last-child {
   color: var(--muted);
-  font-size: clamp(15px, 1.25vw, 18px);
-  line-height: 1.65;
+  font-size: clamp(13px, 0.95vw, 15px);
+  line-height: 1.45;
+}
+
+.profileTitle {
+  font-size: clamp(14px, 1vw, 16px);
+  line-height: 1.2;
+  max-width: 360px;
+  white-space: normal;
+  text-wrap: balance;
+}
+
+.profileSummary {
+  max-width: 920px;
+  font-size: 13px;
+  line-height: 1.35;
 }
 
 .profileFeature {
@@ -554,12 +639,12 @@ h3 {
 .galleryGrid,
 .planGrid {
   display: grid;
-  gap: 14px;
+  gap: 10px;
 }
 
 .serviceGrid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 28px;
+  margin-top: 14px;
 }
 
 .serviceGrid article,
@@ -567,8 +652,8 @@ h3 {
 .featureGrid article,
 .infoPanel,
 .galleryCard {
-  min-height: 132px;
-  padding: 22px;
+  min-height: 100px;
+  padding: 14px;
   background: var(--white);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
@@ -583,8 +668,8 @@ h3 {
 .infoPanel p,
 .costCard p {
   color: var(--muted);
-  line-height: 1.7;
-  font-size: 16px;
+  line-height: 1.5;
+  font-size: 13px;
 }
 
 .serviceGrid span {
@@ -645,7 +730,7 @@ h3 {
 
 .portfolioGroups {
   display: grid;
-  gap: 22px;
+  gap: 8px;
 }
 
 .portfolioGroup {
@@ -654,25 +739,62 @@ h3 {
 
 .portfolioGroupIntro {
   max-width: 880px;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .portfolioGroupIntro p,
 .sectionLead {
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 11px;
+  line-height: 1.35;
 }
 
 .planBand {
   background:
     linear-gradient(135deg, rgba(169, 40, 34, 0.08), transparent 42%),
     var(--white);
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .planGrid {
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  margin-top: 24px;
+  margin-top: 6px;
+}
+
+.faqBand {
+  background: rgba(255, 255, 255, 0.56);
+}
+
+.faqGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.faqItem {
+  padding: 14px 16px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.faqItem summary {
+  cursor: pointer;
+  list-style: none;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.faqItem summary::-webkit-details-marker {
+  display: none;
+}
+
+.faqItem p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .galleryCard,
@@ -735,6 +857,10 @@ h3 {
   align-items: stretch;
 }
 
+.costWhyBand {
+  align-items: stretch;
+}
+
 .costCard,
 .mediaFrame {
   background: var(--white);
@@ -743,7 +869,7 @@ h3 {
 }
 
 .costCard {
-  padding: 24px;
+  padding: 16px;
 }
 
 .mediaFrame {
@@ -759,14 +885,14 @@ h3 {
 }
 
 .bulletList {
-  margin: 14px 0 0;
+  margin: 8px 0 0;
   padding-left: 18px;
   color: var(--muted);
-  line-height: 1.75;
+  line-height: 1.45;
 }
 
 .bulletList li + li {
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 .twoColumnText {
@@ -804,7 +930,7 @@ h3 {
 }
 
 .panelBulletList {
-  margin: 14px 0 0;
+  margin: 8px 0 0;
   padding: 0;
   list-style: none;
 }
@@ -812,7 +938,7 @@ h3 {
 .panelBulletList li {
   position: relative;
   padding: 0 0 0 20px;
-  line-height: 1.75;
+  line-height: 1.45;
 }
 
 .panelBulletList li::before {
@@ -827,7 +953,7 @@ h3 {
 }
 
 .panelBulletList li + li {
-  margin-top: 9px;
+  margin-top: 4px;
 }
 
 .coveragePanel p {
@@ -997,7 +1123,7 @@ footer nav {
   }
 
   .heroThumbStrip {
-    margin-top: 18px;
+    margin-top: 4px;
   }
 
   .headerTools,
@@ -1270,16 +1396,21 @@ h3 {
   }
 }
 
-/* Why Choose Us Section */
 .whyChooseUsSection {
   background: linear-gradient(135deg, rgba(169, 40, 34, 0.04) 0%, rgba(33, 31, 82, 0.02) 100%);
+}
+
+.whyChooseLead {
+  margin-bottom: 10px;
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 .whyChooseGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
-  margin-top: 28px;
+  margin-top: 10px;
 }
 
 .whyChooseCard {

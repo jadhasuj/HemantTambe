@@ -106,6 +106,12 @@ type Content = {
     title: string;
     items: Feature[];
   };
+  whyChoose: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    items: Feature[];
+  };
   portfolio: {
     eyebrow: string;
     title: string;
@@ -289,11 +295,11 @@ const content: Record<Locale, Content> = {
       eyebrow: "Company Profile",
       title: "Technical leadership backed by execution on the ground.",
       body:
-        "Hemant Maruti Tambe, Managing Director, completed B.E. Civil from AISSMS Pune University in May 2006, worked in employment during 2008-2009, and has been running his own business since 2009. The presentation positions the firm as a practical partner for approvals, development, contracting, and complete construction delivery.",
+        "Hemant Maruti Tambe, Managing Director, completed B.E. Civil from AISSMS Pune University in May 2006 and has been running his own business since 2009. The firm focuses on approvals, development, contracting, and complete construction delivery.",
     },
     services: {
       eyebrow: "Service Lines",
-      title: "Approvals, contracting, development, and turnkey construction.",
+      title: "Approvals, contracting, development, turnkey construction.",
       items: [
         "Vastushrish Associates for land measurement, PMC, PMRDA, PCMC, and municipal approvals",
         "Turnkey delivery from excavation to final lock-and-key handover",
@@ -437,6 +443,38 @@ const content: Record<Locale, Content> = {
         {
           title: "Local delivery base",
           text: "The office is in Hadapsar, with work references across Pune city, Pune district, Chakan MIDC, Ambethan MIDC, Kharadi, Narayan Peth, and Sadashiv Peth.",
+        },
+      ],
+    },
+    whyChoose: {
+      eyebrow: "Why Partner With Us",
+      title: "Why choose HMT as your construction partner?",
+      lead:
+        "HMT combines civil engineering discipline, local approvals knowledge, and practical site execution for reliable construction delivery.",
+      items: [
+        {
+          title: "Integrated construction expertise",
+          text: "From land assessment and RCC foundation work to finishing and utilities, HMT manages key project stages with technical control.",
+        },
+        {
+          title: "Transparent project management",
+          text: "Clear milestones, budget awareness, and regular coordination help residential and civic works stay controlled.",
+        },
+        {
+          title: "Local compliance expertise",
+          text: "Experience with Pune-side permissions and building processes helps move approvals efficiently and responsibly.",
+        },
+        {
+          title: "Quality-first methodology",
+          text: "Material planning, structural discipline, and careful execution protect the value of the client investment.",
+        },
+        {
+          title: "Specialized skill sets",
+          text: "HMT supports full construction, home contractor work, structural civil work, renovation, and development coordination.",
+        },
+        {
+          title: "Trusted across Pune",
+          text: "The firm works from Hadapsar across Pune city, Pune district, Chakan, Kharadi, Narayan Peth, and nearby growth areas.",
         },
       ],
     },
@@ -634,6 +672,42 @@ const content: Record<Locale, Content> = {
         },
       ],
     },
+    faq: {
+      eyebrow: "FAQ",
+      title: "Common questions about HMT civil work and construction services.",
+      items: [
+        {
+          question: "Where does HMT work?",
+          answer:
+            "HMT works in Hadapsar, Pune city, and across Pune district, with project references in Kharadi, Chakan, Ambethan MIDC, Narayan Peth, and Sadashiv Peth.",
+        },
+        {
+          question: "What services does HMT provide?",
+          answer:
+            "Services include civil works contracting, home and bungalow construction, RCC and slab work, development support, planning, licensing, and turnkey construction delivery.",
+        },
+        {
+          question: "Who leads the company?",
+          answer:
+            "Hemant Maruti Tambe is the Managing Director. He completed B.E. Civil from AISSMS Pune University in May 2006 and has been running his own business since 2009.",
+        },
+        {
+          question: "What kinds of projects are shown in the portfolio?",
+          answer:
+            "The site includes residential renderings, building projects, society work, school planning, site execution photos, and plan previews from the original presentation files.",
+        },
+        {
+          question: "How can a client contact HMT?",
+          answer:
+            "Clients can call, email, or use the WhatsApp contact option. The office address is Panchawati Complex, Hadapsar Gaon, Hadapsar, Pune, Maharashtra 411028.",
+        },
+        {
+          question: "Is Marathi available on the website?",
+          answer:
+            "Yes. English is the default view, and Marathi is available through the language switch for the same site content and contact details.",
+        },
+      ],
+    },
     coverage: {
       eyebrow: "Service Area",
       title: "Focused on Pune city and Pune district.",
@@ -653,7 +727,7 @@ const content: Record<Locale, Content> = {
     footer: {
       brand: "HMT Hemant Maruti Tambe",
       tagline: "Constructing Concepts",
-      note: "English is the default view. Marathi content from the SCGT presentation is available with one switch.",
+      note: "English is the default view. Marathi content is available with one switch.",
     },
   },
   mr: {
@@ -839,6 +913,38 @@ const content: Record<Locale, Content> = {
         {
           title: "स्थानिक पुणे बेस",
           text: "ऑफिस हडपसर येथे असून पुणे शहर, पुणे जिल्हा, Chakan MIDC, Ambethan MIDC, Kharadi, Narayan Peth आणि Sadashiv Peth येथील कामांचे संदर्भ आहेत.",
+        },
+      ],
+    },
+    whyChoose: {
+      eyebrow: "आमच्यासोबत का काम करावे",
+      title: "HMT ला बांधकाम भागीदार म्हणून का निवडावे?",
+      lead:
+        "HMT सिव्हिल इंजिनिअरिंग शिस्त, स्थानिक मंजुरीचे ज्ञान आणि प्रत्यक्ष साइट अंमलबजावणी एकत्र आणते.",
+      items: [
+        {
+          title: "एकत्रित बांधकाम कौशल्य",
+          text: "जमिनीचे प्राथमिक मूल्यांकन, RCC फाउंडेशन, फिनिशिंग आणि युटिलिटी कामांपर्यंत HMT महत्त्वाचे टप्पे तांत्रिक नियंत्रणाखाली हाताळते.",
+        },
+        {
+          title: "पारदर्शक प्रकल्प व्यवस्थापन",
+          text: "स्पष्ट टप्पे, बजेटची जाणीव आणि नियमित समन्वयामुळे निवासी व सिव्हिल कामे नियंत्रित राहतात.",
+        },
+        {
+          title: "स्थानिक नियमांची जाण",
+          text: "पुणे परिसरातील परवानग्या आणि बांधकाम प्रक्रियेचा अनुभव मंजुरी जबाबदारीने पुढे नेण्यास मदत करतो.",
+        },
+        {
+          title: "गुणवत्तेला प्रथम प्राधान्य",
+          text: "साहित्य नियोजन, संरचनात्मक शिस्त आणि काळजीपूर्वक अंमलबजावणी ग्राहकांच्या गुंतवणुकीचे मूल्य सुरक्षित ठेवते.",
+        },
+        {
+          title: "विशेष कामांची क्षमता",
+          text: "HMT पूर्ण बांधकाम, घर बांधकाम, स्ट्रक्चरल सिव्हिल काम, रिनोवेशन आणि डेव्हलपमेंट समन्वयात सहाय्य करते.",
+        },
+        {
+          title: "पुणे परिसरातील विश्वास",
+          text: "फर्म हडपसरपासून पुणे शहर, पुणे जिल्हा, चाकण, खराडी, नारायण पेठ आणि आसपासच्या भागांमध्ये काम करते.",
         },
       ],
     },
@@ -1036,6 +1142,42 @@ const content: Record<Locale, Content> = {
         },
       ],
     },
+    faq: {
+      eyebrow: "FAQ",
+      title: "HMT सिव्हिल काम आणि बांधकाम सेवांबाबत सामान्य प्रश्न.",
+      items: [
+        {
+          question: "HMT कुठे काम करते?",
+          answer:
+            "HMT हडपसर, पुणे शहर आणि पुणे जिल्ह्यात काम करते, तसेच Kharadi, Chakan, Ambethan MIDC, Narayan Peth आणि Sadashiv Peth येथे प्रकल्प संदर्भ आहेत.",
+        },
+        {
+          question: "HMT कोणत्या सेवा देते?",
+          answer:
+            "सिव्हिल वर्क्स कॉन्ट्रॅक्ट, घर आणि बंगला बांधकाम, RCC व स्लॅब काम, डेव्हलपमेंट सहाय्य, प्लॅनिंग, लायसन्सिंग आणि टर्नकी बांधकाम सेवा दिल्या जातात.",
+        },
+        {
+          question: "कंपनीचे नेतृत्व कोण करतात?",
+          answer:
+            "हेमंत मारुती तांबे हे व्यवस्थापकीय संचालक आहेत. त्यांनी मे 2006 मध्ये AISSMS पुणे विद्यापीठातून B.E. Civil पूर्ण केले असून 2009 पासून स्वतःचा व्यवसाय चालवत आहेत.",
+        },
+        {
+          question: "पोर्टफोलिओमध्ये कोणते प्रकल्प दाखवले आहेत?",
+          answer:
+            "या साइटमध्ये निवासी रेंडरिंग, इमारत प्रकल्प, सोसायटी कामे, शाळा नियोजन, साइट एक्सिक्युशन फोटो आणि मूळ प्रेझेंटेशनमधील प्लॅन प्रिव्ह्यू दाखवले आहेत.",
+        },
+        {
+          question: "ग्राहक HMT शी संपर्क कसा करू शकतात?",
+          answer:
+            "ग्राहक कॉल, ईमेल किंवा WhatsApp संपर्क पर्याय वापरू शकतात. ऑफिस पत्ता: Panchawati Complex, Hadapsar Gaon, Hadapsar, Pune, Maharashtra 411028.",
+        },
+        {
+          question: "वेबसाइटवर मराठी उपलब्ध आहे का?",
+          answer:
+            "होय. इंग्रजी डीफॉल्ट दृश्य आहे आणि त्याच साइट कंटेंट व संपर्क तपशीलांसाठी मराठी भाषा स्विचद्वारे उपलब्ध आहे.",
+        },
+      ],
+    },
     coverage: {
       eyebrow: "कामाचा परिसर",
       title: "पुणे शहर आणि पुणे जिल्ह्यावर लक्ष केंद्रित.",
@@ -1217,10 +1359,12 @@ export default function Home() {
           <h1>{copy.hero.title}</h1>
           <p className="lead">{copy.hero.lead}</p>
           <div className="heroFacts" aria-label="Key business facts">
-            <span>Hadapsar, Pune</span>
-            <span>Pune district projects</span>
-            <span>Since 2009</span>
-            <span>B.E. Civil</span>
+            {(locale === "mr"
+              ? ["हडपसर, पुणे", "पुणे जिल्ह्यातील प्रकल्प", "२००९ पासून", "बी. ई. सिव्हिल"]
+              : ["Hadapsar, Pune", "Pune district projects", "Since 2009", "B.E. Civil"]
+            ).map((fact) => (
+              <span key={fact}>{fact}</span>
+            ))}
           </div>
           <div className="heroActions" aria-label="Quick contact actions">
             <a href="tel:+919595341818" title="Call Hemant Tambe at +91 9595341818">
@@ -1251,17 +1395,24 @@ export default function Home() {
             <p key={line}>{line}</p>
           ))}
         </aside>
-        <div className="heroThumbStrip" aria-label="Completed project thumbnails">
+        <div className="project-grid heroThumbStrip" aria-label="Completed building thumbnails">
           {[
-            ["/projects/building-project.jpeg", "Building"],
-            ["/projects/bungalow-project.jpeg", "Bungalow"],
-            ["/projects/work-completed.jpeg", "Completed"],
-            ["/projects/hemant-tambe-profile.jpeg", "Lead"],
-          ].map(([src, label]) => (
-            <figure key={label}>
-              <img src={src} alt={`${label} project thumbnail`} loading="lazy" />
-              <figcaption>{label}</figcaption>
-            </figure>
+            "/presentation/residential-render.jpeg",
+            "/projects/building-project-4.jpeg",
+            "/projects/building-project.jpeg",
+            "/projects/society-project-3.jpeg",
+          ].map((src) => (
+            <article className="project-card" key={src}>
+              <div className="thumbnail-wrapper">
+                <img
+                  className="project-thumbnail"
+                  src={src}
+                  alt={locale === "mr" ? "पूर्ण झालेल्या इमारतीचे छोटेखानी दृश्य" : "Completed building thumbnail"}
+                  loading="lazy"
+                />
+                <span className="project-status">{locale === "mr" ? "पूर्ण" : "Completed"}</span>
+              </div>
+            </article>
           ))}
         </div>
       </section>
@@ -1269,9 +1420,9 @@ export default function Home() {
       <section className="band intro" id="profile" aria-labelledby="profileHeading">
         <div>
           <p className="eyebrow" id="profileHeading">{copy.intro.eyebrow}</p>
-          <h2>{copy.intro.title}</h2>
+          <h2 className="profileTitle">{copy.intro.title}</h2>
         </div>
-        <p>{copy.intro.body}</p>
+        <p className="profileSummary">{copy.intro.body}</p>
       </section>
 
       <section className="band profileFeature" aria-labelledby="profileFeatureHeading">
@@ -1317,7 +1468,7 @@ export default function Home() {
       <section className="band" id="services" aria-labelledby="servicesHeading">
         <div className="sectionHead">
           <p className="eyebrow" id="servicesHeading">{copy.services.eyebrow}</p>
-          <h2>{copy.services.title}</h2>
+          <h2 className="serviceTitle">{copy.services.title}</h2>
         </div>
         <div className="serviceGrid">
           {copy.services.items.map((item) => (
@@ -1344,69 +1495,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
       <section className="band whyChooseUsSection" aria-labelledby="whyChooseHeading">
         <div className="sectionHead">
-          <p className="eyebrow" id="whyChooseHeading">Why Partner With Us</p>
-          <h2>Why Choose HMT as Your Construction Partner?</h2>
+          <p className="eyebrow" id="whyChooseHeading">{copy.whyChoose.eyebrow}</p>
+          <h2>{copy.whyChoose.title}</h2>
         </div>
         <div>
-          <p className="lead" style={{ marginBottom: "32px" }}>
-            We don&apos;t just build structures; we build value. With over a decade of expertise, we bridge
-            the gap between high-end architectural design and rigorous civil engineering.
-          </p>
+          <p className="lead whyChooseLead">{copy.whyChoose.lead}</p>
           <div className="whyChooseGrid">
-            <article className="whyChooseCard">
-              <h3>Integrated Construction Expertise</h3>
-              <p>
-                From initial land assessment and foundation (RCC) work to interior finishing and
-                utility installation—we handle every aspect of your project with precision and care.
-              </p>
-            </article>
-            <article className="whyChooseCard">
-              <h3>Transparent Project Management</h3>
-              <p>
-                Real-time updates and clear milestones ensure your project&mdash;be it residential or civic
-                infrastructure&mdash;stays on budget and on schedule. You&apos;re always in the loop.
-              </p>
-            </article>
-            <article className="whyChooseCard">
-              <h3>Local Compliance Expertise</h3>
-              <p>
-                Deep understanding of building bylaws specific to PMC and PCMC. We navigate local
-                regulations efficiently, accelerating approvals without compromising quality.
-              </p>
-            </article>
-            <article className="whyChooseCard">
-              <h3>Quality-First Methodology</h3>
-              <p>
-                Premium-grade materials and modern construction standards ensure your investment stands
-                the test of time against Pune&apos;s regional climate and environmental conditions.
-              </p>
-            </article>
-            <article className="whyChooseCard">
-              <h3>Specialized Skill Sets</h3>
-              <p>
-                Whether general contractor services for full home builds or dedicated civil work for
-                structural reinforcement, our teams have the expertise and modern machinery to deliver.
-              </p>
-            </article>
-            <article className="whyChooseCard">
-              <h3>Trusted Across Pune & PCMC</h3>
-              <p>
-                Active in 28+ locations from Kothrud to Hinjewadi, from Hadapsar to Chakan. Our
-                network ensures local excellence wherever you build.
-              </p>
-            </article>
-          </div>
-          <div style={{ marginTop: "40px", textAlign: "center" }}>
-            <Link
-              href="/areas"
-              className="heroActions"
-              style={{ justifyContent: "center", display: "inline-flex" }}
-            >
-              Explore Our Service Areas
-            </Link>
+            {copy.whyChoose.items.map((item) => (
+              <article className="whyChooseCard" key={item.title}>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
@@ -1441,7 +1543,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band splitMedia" aria-labelledby="costingHeading">
+      <section className="band splitMedia costWhyBand" aria-labelledby="costingHeading whyEngineerHeading">
         <div className="costCard">
           <p className="eyebrow" id="costingHeading">{copy.costing.eyebrow}</p>
           <h2>{copy.costing.title}</h2>
@@ -1452,20 +1554,9 @@ export default function Home() {
             ))}
           </ul>
         </div>
-        <figure className="mediaFrame">
-          <img
-            src="/presentation/construction-cost-graphic.png"
-            alt="Construction cost and planning graphic from the presentation"
-          />
-        </figure>
-      </section>
-
-      <section className="band" aria-labelledby="whyEngineerHeading">
-        <div className="sectionHead">
+        <div className="costCard">
           <p className="eyebrow" id="whyEngineerHeading">{copy.whyEngineer.eyebrow}</p>
           <h2>{copy.whyEngineer.title}</h2>
-        </div>
-        <div className="twoColumnText">
           <ul className="bulletList">
             {copy.whyEngineer.bullets.map((item) => (
               <li key={item}>{item}</li>
@@ -1555,7 +1646,6 @@ export default function Home() {
           <p className="eyebrow" id="plansHeading">{copy.plans.eyebrow}</p>
           <h2>{copy.plans.title}</h2>
         </div>
-        <p className="sectionLead">{copy.plans.body}</p>
         <div className="planGrid">
           {copy.plans.items.map((item) => (
             <article className="planCard" key={item.title}>
@@ -1592,6 +1682,72 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="band scgtBand" aria-labelledby="scgtHeading">
+        <div className="sectionHead">
+          <h2 className="scgtTitle">
+            {locale === "mr"
+              ? "शाळा, कॅम्पस, हाउसिंग आणि साइट प्रगती."
+              : "School, campus, housing, and site progression."}
+          </h2>
+        </div>
+        <div className="featureGrid scgtGrid">
+          {(locale === "mr"
+            ? [
+                {
+                  title: "कॅम्पस इमारत",
+                  text: "मूळ सादरीकरणातील कॅम्पस इमारत आणि संकल्पचित्र दृश्य.",
+                  image: "/presentation/concept-render-campus.jpeg",
+                },
+                {
+                  title: "हाउसिंग ब्लॉक",
+                  text: "स्लाइड सेटमधील मोठा हाउसिंग ब्लॉक आणि अपार्टमेंट फसाड प्रगती.",
+                  image: "/presentation/large-housing-block.jpeg",
+                },
+                {
+                  title: "साइट क्रम",
+                  text: "खोदाई, स्ट्रक्चर प्रगती, फसाड फिनिश आणि पूर्ण बंगला दृश्य.",
+                  image: "/presentation/excavation-work.jpeg",
+                },
+                {
+                  title: "शाळा नियोजन",
+                  text: "देहेणे, ता. खेड, जि. पुणे येथील शिवाजी विद्यालय व ज्युनियर कॉलेज लेआउट.",
+                  image: "/plans/school-plan.jpg",
+                },
+              ]
+            : [
+                {
+                  title: "Campus building",
+                  text: "Completed campus building and concept render views used in the original deck.",
+                  image: "/presentation/concept-render-campus.jpeg",
+                },
+                {
+                  title: "Housing block",
+                  text: "Large housing block and apartment facade progression from the slide set.",
+                  image: "/presentation/large-housing-block.jpeg",
+                },
+                {
+                  title: "Site sequence",
+                  text: "Excavation, structural progress, facade finish, and completed bungalow views from the presentation photos.",
+                  image: "/presentation/excavation-work.jpeg",
+                },
+                {
+                  title: "School planning",
+                  text: "Shivaji Vidhyalay and Junior College layout at Dehene, Tal. Khed, Dist. Pune with classrooms, office, toilets, playground, amphitheatre, parking, and circulation planning.",
+                  image: "/plans/school-plan.jpg",
+                },
+              ]
+          ).map((item) => (
+            <article className="galleryCard" key={item.title}>
+              <img src={item.image} alt={item.title} loading="lazy" />
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="band galleryBand" id="presentation-gallery" aria-labelledby="projectsHeading">
         <div className="sectionHead">
           <p className="eyebrow" id="projectsHeading">{copy.projects.eyebrow}</p>
@@ -1606,6 +1762,21 @@ export default function Home() {
                 <p>{item.text}</p>
               </div>
             </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="band faqBand" aria-labelledby="faqHeading">
+        <div className="sectionHead">
+          <p className="eyebrow" id="faqHeading">{copy.faq.eyebrow}</p>
+          <h2>{copy.faq.title}</h2>
+        </div>
+        <div className="faqGrid">
+          {copy.faq.items.map((item) => (
+            <details className="faqItem" key={item.question}>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
           ))}
         </div>
       </section>
@@ -1690,7 +1861,7 @@ export default function Home() {
           <a href="#projects">{copy.nav.projects}</a>
           <a href="#plans">{copy.nav.plans}</a>
           <a href="#contact">{copy.nav.contact}</a>
-          <a href="/sitemap.xml">Sitemap</a>
+          <a href="/sitemap.xml">{locale === "mr" ? "साइटमॅप" : "Sitemap"}</a>
         </nav>
       </footer>
     </main>
