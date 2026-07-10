@@ -1216,6 +1216,12 @@ export default function Home() {
           <p className="eyebrow">{copy.hero.eyebrow}</p>
           <h1>{copy.hero.title}</h1>
           <p className="lead">{copy.hero.lead}</p>
+          <div className="heroFacts" aria-label="Key business facts">
+            <span>Hadapsar, Pune</span>
+            <span>Pune district projects</span>
+            <span>Since 2009</span>
+            <span>B.E. Civil</span>
+          </div>
           <div className="heroActions" aria-label="Quick contact actions">
             <a href="tel:+919595341818" title="Call Hemant Tambe at +91 9595341818">
               <PhoneMark />
@@ -1245,6 +1251,19 @@ export default function Home() {
             <p key={line}>{line}</p>
           ))}
         </aside>
+        <div className="heroThumbStrip" aria-label="Completed project thumbnails">
+          {[
+            ["/projects/building-project.jpeg", "Building"],
+            ["/projects/bungalow-project.jpeg", "Bungalow"],
+            ["/projects/work-completed.jpeg", "Completed"],
+            ["/projects/hemant-tambe-profile.jpeg", "Lead"],
+          ].map(([src, label]) => (
+            <figure key={label}>
+              <img src={src} alt={`${label} project thumbnail`} loading="lazy" />
+              <figcaption>{label}</figcaption>
+            </figure>
+          ))}
+        </div>
       </section>
 
       <section className="band intro" id="profile" aria-labelledby="profileHeading">

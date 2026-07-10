@@ -223,6 +223,11 @@ nav a {
   position: relative;
 }
 
+.hero {
+  min-height: auto;
+  padding-bottom: clamp(24px, 3vw, 42px);
+}
+
 .eyebrow {
   margin: 0 0 12px;
   color: var(--red);
@@ -262,8 +267,24 @@ h3 {
 .lead {
   max-width: 760px;
   color: #353846;
-  font-size: clamp(17px, 1.7vw, 21px);
-  line-height: 1.6;
+  font-size: clamp(15px, 1.35vw, 19px);
+  line-height: 1.55;
+}
+
+.heroFacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.heroFacts span {
+  padding: 10px 12px;
+  border: 1px solid rgba(33, 31, 82, 0.12);
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 800;
 }
 
 .heroActions,
@@ -373,7 +394,7 @@ h3 {
 }
 
 .heroPanel {
-  padding: 24px;
+  padding: 20px;
   background: rgba(255, 255, 255, 0.91);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
@@ -396,17 +417,47 @@ h3 {
 }
 
 .heroPanel p {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   padding-left: 12px;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.5;
   border-left: 2px solid var(--red);
   font-weight: 500;
 }
 
+.heroThumbStrip {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.heroThumbStrip figure {
+  margin: 0;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.heroThumbStrip img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.heroThumbStrip figcaption {
+  padding: 8px 10px 10px;
+  color: var(--navy);
+  font-size: 12px;
+  font-weight: 800;
+}
+
 .band,
 .contactBand {
-  padding: clamp(42px, 5vw, 56px) clamp(18px, 5vw, 76px);
+  padding: clamp(34px, 4vw, 52px) clamp(18px, 5vw, 72px);
 }
 
 .band {
@@ -437,8 +488,8 @@ h3 {
 
 .intro p:last-child {
   color: var(--muted);
-  font-size: clamp(17px, 1.4vw, 19px);
-  line-height: 1.7;
+  font-size: clamp(15px, 1.25vw, 18px);
+  line-height: 1.65;
 }
 
 .profileFeature {
@@ -594,7 +645,7 @@ h3 {
 
 .portfolioGroups {
   display: grid;
-  gap: 28px;
+  gap: 22px;
 }
 
 .portfolioGroup {
@@ -609,8 +660,8 @@ h3 {
 .portfolioGroupIntro p,
 .sectionLead {
   color: var(--muted);
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 .planBand {
@@ -622,6 +673,11 @@ h3 {
 .planGrid {
   grid-template-columns: repeat(5, minmax(0, 1fr));
   margin-top: 24px;
+}
+
+.galleryCard,
+.planCard {
+  border-radius: 6px;
 }
 
 .planCard {
@@ -777,8 +833,8 @@ h3 {
 .coveragePanel p {
   margin-bottom: 0;
   color: var(--muted);
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 .coveragePanel a {
@@ -839,7 +895,7 @@ address strong {
 
 .contactMedia iframe {
   width: 100%;
-  min-height: 380px;
+  min-height: 340px;
   border: 0;
   background: var(--soft);
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.18);
@@ -889,7 +945,8 @@ footer nav {
   .split,
   .contactBand,
   .splitMedia,
-  .splitPanels {
+  .splitPanels,
+  .heroThumbStrip {
     grid-template-columns: 1fr;
   }
 
@@ -931,6 +988,18 @@ footer nav {
     grid-template-columns: 1fr;
   }
 
+  .heroFacts {
+    gap: 8px;
+  }
+
+  .heroFacts span {
+    width: 100%;
+  }
+
+  .heroThumbStrip {
+    margin-top: 18px;
+  }
+
   .headerTools,
   .langToggle {
     width: 100%;
@@ -942,8 +1011,8 @@ footer nav {
 
   .band,
   .contactBand {
-    padding-top: 46px;
-    padding-bottom: 46px;
+    padding-top: 38px;
+    padding-bottom: 38px;
   }
 }
 

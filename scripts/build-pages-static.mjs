@@ -211,6 +211,12 @@ const html = `<!doctype html>
       <p class="eyebrow">Civil Engineer and Civil Works Contractor</p>
       <h1>Hemant Maruti Tambe</h1>
       <p class="lead">Managing Director of HMT, providing civil works, construction contracting, development support, architectural planning, and licensing services across Pune city and Pune district.</p>
+      <div class="heroFacts" aria-label="Key business facts">
+        <span>Hadapsar, Pune</span>
+        <span>Pune district projects</span>
+        <span>Since 2009</span>
+        <span>B.E. Civil</span>
+      </div>
       <div class="heroActions" aria-label="Contact actions">
         <a href="tel:+919595341818">Call Hemant Tambe</a>
         <a class="whatsappLink" href="${whatsappHref}" target="_blank" rel="noreferrer">${whatsappMark} WhatsApp</a>
@@ -222,6 +228,14 @@ const html = `<!doctype html>
       <p>Construction Contractor | Developer | Promoter</p>
       <p>Architectural Planning and Licensing</p>
     </aside>
+    <div class="heroThumbStrip" aria-label="Completed project thumbnails">
+      ${[
+        ["/projects/building-project.jpeg", "Building"],
+        ["/projects/bungalow-project.jpeg", "Bungalow"],
+        ["/projects/work-completed.jpeg", "Completed"],
+        ["/projects/hemant-tambe-profile.jpeg", "Lead"],
+      ].map(([src, label]) => `<figure><img src="${src}" alt="${label} project thumbnail" loading="lazy"><figcaption>${label}</figcaption></figure>`).join("")}
+    </div>
   </section>
   <section class="band intro" id="profile">
     <div><p class="eyebrow">Company Profile</p><h2>Reliable civil work leadership for Pune projects.</h2></div>
